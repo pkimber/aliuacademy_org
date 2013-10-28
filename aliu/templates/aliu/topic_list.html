@@ -17,9 +17,13 @@
             <th>
               {{ course.name }}
               topics for 
-              {{ course.department.name }}
+              <a href="{% url "aliu.course.list" course.department.pk %}">
+                {{ course.department.name }}
+              </a>
               at
-              {{ course.department.university.name }}
+              <a href="{% url "aliu.department.list" course.department.university.slug %}">
+                {{ course.department.university.name }}
+              </a>
               </a>
             </th>
           </tr>

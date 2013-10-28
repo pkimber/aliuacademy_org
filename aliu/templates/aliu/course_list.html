@@ -15,7 +15,11 @@
         <thead>
           <tr>
             <th>
-              {{ department.name }} courses at {{ department.university.name }}
+              {{ department.name }}
+              courses at
+              <a href="{% url "aliu.department.list" department.university.slug %}">
+                {{ department.university.name }}
+              </a>
             </th>
           </tr>
         </thead>
