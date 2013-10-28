@@ -1,11 +1,11 @@
 {% extends "aliu/base.html" %}
 
 {% block sub_title %}
-  Universities
+  Departments
 {% endblock sub_title %}
 
 {% block sub_heading %}
-  Universities
+  {{ university.name }}
 {% endblock sub_heading %}
 
 {% block content %}
@@ -14,16 +14,14 @@
       <table class="pure-table pure-table-bordered">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Department</th>
           </tr>
         </thead>
         <tbody>
-          {% for university in university_list %}
+          {% for department in department_list %}
             <tr valign="top">
               <td>
-                <a href="{% url "aliu.department.list" university.slug %}">
-                  {{ university.name }}
-                </a>
+                {{ department.name }}
               </td>
             </tr>
           {% endfor %}

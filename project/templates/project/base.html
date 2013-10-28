@@ -9,6 +9,12 @@
   aliuacademy.org
 {% endblock heading %}
 
+{% block menu %}
+  <li {% if 'university' in path %}class="pure-menu-selected"{% endif %}>
+    <a href="{% url "aliu.university.list" %}">Universities</a>
+  </li>
+{% endblock menu %}
+
 {% block footer %}
   <div class="legal pure-g-r">
     <div class="pure-u-1">
