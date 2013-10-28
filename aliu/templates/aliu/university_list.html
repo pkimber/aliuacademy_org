@@ -1,0 +1,30 @@
+{% extends "aliu/base.html" %}
+
+{% block sub_title %}
+  Universities
+{% endblock sub_title %}
+
+{% block sub_heading %}
+  Universities
+{% endblock sub_heading %}
+
+{% block content %}
+  <div class="pure-g-r">
+    <div class="pure-u-1">
+      <table class="pure-table pure-table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for university in university_list %}
+            <tr valign="top">
+              <td>{{ university.name }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock content %}

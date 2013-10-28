@@ -26,6 +26,9 @@ urlpatterns = patterns(
     url(regex=r'^admin/',
         view=include(admin.site.urls)
         ),
+    url(regex=r'^aliu/',
+        view=include('aliu.urls')
+        ),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
