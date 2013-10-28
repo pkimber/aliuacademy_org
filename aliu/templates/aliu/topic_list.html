@@ -5,7 +5,7 @@
 {% endblock sub_title %}
 
 {% block sub_heading %}
-  {{ course.name }}
+  Topics
 {% endblock sub_heading %}
 
 {% block content %}
@@ -14,7 +14,14 @@
       <table class="pure-table pure-table-bordered">
         <thead>
           <tr>
-            <th>Topics</th>
+            <th>
+              {{ course.name }}
+              topics for 
+              {{ course.department.name }}
+              at
+              {{ course.department.university.name }}
+              </a>
+            </th>
           </tr>
         </thead>
         <tbody>
