@@ -11,9 +11,32 @@ from braces.views import (
 from base.view_utils import BaseMixin
 
 from .models import (
+    Course,
     Department,
+    Topic,
     University,
 )
+
+
+class CourseListView(
+        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, ListView):
+
+    model = Course
+
+    def _get_department(self):
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(Department, pk=pk)
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseListView, self).get_context_data(**kwargs)
+        context.update(dict(
+            department=self._get_department(),
+        ))
+        return context
+
+    def get_queryset(self):
+        department = self._get_department()
+        return Course.objects.filter(department=department)
 
 
 class DepartmentListView(
@@ -26,9 +49,7 @@ class DepartmentListView(
         return get_object_or_404(University, slug=slug)
 
     def get_context_data(self, **kwargs):
-        context = super(
-            DepartmentListView, self
-        ).get_context_data(**kwargs)
+        context = super(DepartmentListView, self).get_context_data(**kwargs)
         context.update(dict(
             university=self._get_university(),
         ))
@@ -37,6 +58,27 @@ class DepartmentListView(
     def get_queryset(self):
         university = self._get_university()
         return Department.objects.filter(university=university)
+
+
+class TopicListView(
+        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, ListView):
+
+    model = Topic
+
+    def _get_course(self):
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(Course, pk=pk)
+
+    def get_context_data(self, **kwargs):
+        context = super(TopicListView, self).get_context_data(**kwargs)
+        context.update(dict(
+            course=self._get_course(),
+        ))
+        return context
+
+    def get_queryset(self):
+        course = self._get_course()
+        return Topic.objects.filter(course=course)
 
 
 class UniversityListView(
