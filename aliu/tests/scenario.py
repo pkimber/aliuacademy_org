@@ -7,14 +7,31 @@ from aliu.tests.model_maker import (
 
 
 def default_scenario_aliu():
-    uni = make_university('exeter', 'Exeter')
-    dept = make_department(uni, 'Mathematics')
-    course = make_course(dept, 'Advanced')
-    make_topic(course, 'Basic')
-    make_topic(course, 'Experienced')
-    course = make_course(dept, 'Beginner')
-    make_department(uni, 'Engineering')
-    uni = make_university('southampton', 'Southampton')
-    make_department(uni, 'Electrical Engineering')
-    make_department(uni, 'Electronics')
-    make_department(uni, 'Computing')
+    # MIT
+    uni = make_university('mit', "MIT")
+    dept = make_department(
+        uni,
+        "Electrical Engineering and Computer Science (EECS)"
+    )
+    course = make_course(
+        dept,
+        1,
+        "Introduction to computer science and programming"
+    )
+    make_topic(course, 1, "Introduction to the course")
+    make_topic(course, 2, "Core elements of a computer program")
+    course = make_course(dept, 2, "Circuits and Electronics")
+    make_topic(course, 1, "Introduction to the course")
+    make_topic(course, 2, "Core elements of a computer program")
+    dept = make_department(uni, "Mathematics")
+    course = make_course(dept, 1, "Linear algebra")
+    make_topic(course, 1, "The Geometry of linear equations")
+    make_topic(course, 2, "Matrices")
+    course = make_course(dept, 2, "Differential equations")
+    # edX
+    uni = make_university('edx', 'edX')
+    dept = make_department(uni, "Electrical engineering and Computer science")
+    course = make_course(dept, 1, "Software as a service")
+    course = make_course(dept, 2, "Foundation of computer graphics")
+    dept = make_department(uni, "Civil Engineering")
+    course = make_course(dept, 1, "Elements of structures")

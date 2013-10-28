@@ -8,10 +8,11 @@ from aliu.models import (
 )
 
 
-def make_course(department, name, **kwargs):
+def make_course(department, order, name, **kwargs):
     return clean_and_save(
         Course(
             department=department,
+            order=order,
             name=name,
             **kwargs
         )
@@ -28,10 +29,11 @@ def make_department(university, name, **kwargs):
     )
 
 
-def make_topic(course, name, **kwargs):
+def make_topic(course, order, name, **kwargs):
     return clean_and_save(
         Topic(
             course=course,
+            order=order,
             name=name,
             **kwargs
         )

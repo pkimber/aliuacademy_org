@@ -20,6 +20,7 @@ reversion.register(Department)
 
 
 class Course(TimeStampedModel):
+    order = models.IntegerField()
     name = models.CharField(max_length=100)
     department = models.ForeignKey(Department)
 
@@ -27,6 +28,7 @@ reversion.register(Course)
 
 
 class Topic(TimeStampedModel):
+    order = models.IntegerField()
     name = models.CharField(max_length=100)
     course = models.ForeignKey(Course)
 
