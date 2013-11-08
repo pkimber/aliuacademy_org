@@ -1,3 +1,5 @@
+"""Local settings (for development)."""
+
 from .base import *
 
 DEBUG = True
@@ -8,6 +10,9 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
 TEMPLATE_STRING_IF_INVALID = '**** INVALID EXPRESSION: %s ****'
+
+# FTP upload 'static' folder
+FTP_STATIC_DIR = 'ftp_static_dir'
 
 # https://docs.djangoproject.com/en/1.5/howto/static-files/#serving-files-uploaded-by-a-user
 MEDIA_ROOT = 'media'

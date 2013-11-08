@@ -9,3 +9,4 @@ docutils
 psycopg2
 pyyaml
 south
+walkdir
