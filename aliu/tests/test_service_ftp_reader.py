@@ -18,4 +18,4 @@ class TestServiceFtpReader(TestCase):
         FtpReader(self.folder)
 
     def test_read(self):
-        FtpReader(self.folder).read()
+        FtpReader(self.folder).update()

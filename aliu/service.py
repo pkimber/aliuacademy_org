@@ -156,19 +156,5 @@ class FtpReader(object):
                 _update_university(university)
                 self._read_departments(path, university)
 
-    def read(self):
+    def update(self):
         self._read_universities()
-        return
-
-
-
-        """Parse the folder and files in the FTP folder."""
-        first_pass = True
-        walk = filtered_walk(self.ftp_folder)
-        for path, subdirs, files in walk:
-            print
-            if first_pass:
-                first_pass = False
-                _universities(path, subdirs)
-            else:
-                _courses(path, subdirs, files)
