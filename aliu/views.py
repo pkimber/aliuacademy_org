@@ -81,7 +81,7 @@ class CourseTopicListView(
 
     def get_queryset(self):
         course = self._get_course()
-        return Topic.objects.filter(course=course).order_by('-order')
+        return Topic.objects.filter(course=course)
 
 
 class TopicDetailView(
@@ -97,7 +97,7 @@ class TopicDetailView(
         context = super(TopicDetailView, self).get_context_data(**kwargs)
         topic = self._get_topic()
         context.update(dict(
-            topic_list=topic.course.topic_set.order_by('-order').all,
+            topic_list=topic.course.topic_set.all,
         ))
         return context
 
