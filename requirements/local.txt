@@ -3,4 +3,4 @@ fabric
 gitpython==0.3.1-beta2
 hgapi
 ipdb
-pytest
+pytest-django==2.3.1
