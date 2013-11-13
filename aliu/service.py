@@ -4,8 +4,18 @@ import os
 
 from walkdir import filtered_walk
 
-from .models import University
-from aliu.tests.model_maker import make_university
+from .models import (
+    Course,
+    Department,
+    Topic,
+    University,
+)
+from aliu.tests.model_maker import (
+    make_course,
+    make_department,
+    make_topic,
+    make_university,
+)
 
 
 class AcademyError(Exception):
@@ -30,6 +40,54 @@ def _courses(path, subdirs, files):
     else:
         raise AcademyError('Cannot parse FTP folder structure')
 
+
+def _update_course(university, department, order, course):
+    univ = University.objects.get(folder_name=university)
+    dept = Department.objects.get(university=univ, folder_name=department)
+    try:
+        Course.objects.get(
+            department=dept,
+            folder_name=course
+        )
+    except Course.DoesNotExist:
+        make_course(
+            department=dept,
+            order=order,
+            folder_name=course,
+        )
+
+
+def _update_topic(university, department, course, order, topic):
+    univ = University.objects.get(folder_name=university)
+    dept = Department.objects.get(university=univ, folder_name=department)
+    cour = Course.objects.get(department=dept, folder_name=course)
+    try:
+        Topic.objects.get(
+            course=cour,
+            video=topic,
+        )
+    except Topic.DoesNotExist:
+        make_topic(
+            course=cour,
+            order=order,
+            file_name=topic,
+        )
+
+
+def _update_department(university, department):
+    uni = University.objects.get(folder_name=university)
+    try:
+        Department.objects.get(
+            university=uni,
+            folder_name=department
+        )
+    except Department.DoesNotExist:
+        make_department(
+            university=uni,
+            folder_name=department,
+        )
+
+
 def _update_university(university):
     try:
         University.objects.get(folder_name=university)
@@ -38,7 +96,6 @@ def _update_university(university):
             slug=university.lower(),
             folder_name=university,
         )
-
 
 
 def _universities(path, subdirs):
@@ -60,12 +117,15 @@ class FtpReader(object):
         self.academy_folder = os.path.join(ftp_folder, 'academy')
 
     def _read_courses(self, folder, university, department):
+        order = 0
         folders = os.listdir(folder)
         for course in folders:
             path = os.path.join(folder, course)
             if os.path.isdir(path):
+                order = order + 1
                 print '    {}'.format(course)
-                self._read_topics(path, course)
+                _update_course(university, department, order, course)
+                self._read_topics(path, university, department, course)
 
     def _read_departments(self, folder, university):
         folders = os.listdir(folder)
@@ -73,13 +133,17 @@ class FtpReader(object):
             path = os.path.join(folder, department)
             if os.path.isdir(path):
                 print '  {}'.format(department)
+                _update_department(university, department)
                 self._read_courses(path, university, department)
 
-    def _read_topics(self, folder, course):
+    def _read_topics(self, folder, university, department, course):
+        order = 0
         folders = os.listdir(folder)
         for topic in folders:
             path = os.path.join(folder, topic)
             if os.path.isfile(path):
+                order = order + 1
+                _update_topic(university, department, course, order, topic)
                 print '      {}'.format(topic)
 
     def _read_universities(self):

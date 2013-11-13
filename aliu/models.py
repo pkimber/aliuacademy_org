@@ -26,6 +26,7 @@ class Department(TimeStampedModel):
     """Department at the University."""
 
     name = models.CharField(max_length=100)
+    folder_name = models.CharField(max_length=100)
     university = models.ForeignKey(University)
 
 reversion.register(Department)
