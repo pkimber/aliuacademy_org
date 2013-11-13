@@ -13,6 +13,16 @@ TEMPLATE_STRING_IF_INVALID = '**** INVALID EXPRESSION: %s ****'
 
 # FTP upload 'static' folder
 FTP_STATIC_DIR = 'ftp_static_dir'
+FTP_STATIC_URL = 'file://{}/'.format(os.path.join(
+    os.path.realpath(__file__),
+    '..',
+    '..',
+    'aliu',
+    'tests',
+    'data',
+    'ftp_static_dir',
+))
+print FTP_STATIC_URL
 
 # https://docs.djangoproject.com/en/1.5/howto/static-files/#serving-files-uploaded-by-a-user
 MEDIA_ROOT = 'media'

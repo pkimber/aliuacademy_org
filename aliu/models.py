@@ -16,7 +16,7 @@ class University(TimeStampedModel):
 
     slug = models.SlugField()
     name = models.CharField(max_length=100)
-    folder_name = models.CharField(max_length=100)
+    folder_name = models.CharField(max_length=100, unique=True)
 
 reversion.register(University)
 
@@ -28,6 +28,12 @@ class Department(TimeStampedModel):
     name = models.CharField(max_length=100)
     folder_name = models.CharField(max_length=100)
     university = models.ForeignKey(University)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Department'
+        verbose_name_plural = 'Departments'
+        unique_together = ('university', 'folder_name',)
 
 reversion.register(Department)
 
@@ -41,6 +47,12 @@ class Course(TimeStampedModel):
     folder_name = models.CharField(max_length=100)
     department = models.ForeignKey(Department)
 
+    class Meta:
+        ordering = ('order',)
+        verbose_name = 'Course'
+        verbose_name_plural = 'Courses'
+        unique_together = ('department', 'folder_name',)
+
 reversion.register(Course)
 
 
@@ -51,7 +63,9 @@ class Topic(TimeStampedModel):
     order = models.IntegerField()
     name = models.CharField(max_length=100)
     video = models.FileField(
-        upload_to='video/%Y/%m/%d', storage=ftp_file_store
+        max_length=200,
+        upload_to='video/%Y/%m/%d',
+        storage=ftp_file_store,
     )
     course = models.ForeignKey(Course)
 

@@ -36,13 +36,14 @@ def make_department(university, folder_name, **kwargs):
     return clean_and_save(Department(**defaults))
 
 
-def make_topic(course, order, file_name, **kwargs):
+def make_topic(course, order, file_path, **kwargs):
     """Create a 'Topic' in the database and return it."""
-    name, _ = os.path.splitext(file_name)
+    name = os.path.basename(file_path)
+    name, _ = os.path.splitext(name)
     defaults = dict(
         order=order,
         name=name,
-        video=file_name,
+        video=file_path,
         course=course,
     )
     defaults.update(kwargs)

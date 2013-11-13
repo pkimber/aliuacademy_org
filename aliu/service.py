@@ -29,36 +29,6 @@ class AcademyError(Exception):
         return repr('%s, %s' % (self.__class__.__name__, self.value))
 
 
-def _read_courses(folder, university, department):
-    order = 0
-    folders = os.listdir(folder)
-    for course in folders:
-        path = os.path.join(folder, course)
-        if os.path.isdir(path):
-            order = order + 1
-            _update_course(university, department, order, course)
-            _read_topics(path, university, department, course)
-
-
-def _read_departments(folder, university):
-    folders = os.listdir(folder)
-    for department in folders:
-        path = os.path.join(folder, department)
-        if os.path.isdir(path):
-            _update_department(university, department)
-            _read_courses(path, university, department)
-
-
-def _read_topics(folder, university, department, course):
-    order = 0
-    folders = os.listdir(folder)
-    for topic in folders:
-        path = os.path.join(folder, topic)
-        if os.path.isfile(path):
-            order = order + 1
-            _update_topic(university, department, course, order, topic)
-
-
 def _update_course(university, department, order, course):
     univ = University.objects.get(folder_name=university)
     dept = Department.objects.get(university=univ, folder_name=department)
@@ -75,20 +45,20 @@ def _update_course(university, department, order, course):
         )
 
 
-def _update_topic(university, department, course, order, topic):
+def _update_topic(university, department, course, order, path, topic):
     univ = University.objects.get(folder_name=university)
     dept = Department.objects.get(university=univ, folder_name=department)
     cour = Course.objects.get(department=dept, folder_name=course)
     try:
         Topic.objects.get(
             course=cour,
-            video=topic,
+            video=path,
         )
     except Topic.DoesNotExist:
         make_topic(
             course=cour,
             order=order,
-            file_name=topic,
+            file_path=path,
         )
 
 
@@ -127,15 +97,78 @@ class FtpReader(object):
 
     def __init__(self, ftp_folder):
         """Initialise with 'settings.FTP_STATIC_DIR'."""
-        self.academy_folder = os.path.join(ftp_folder, 'academy')
+        self.ftp_folder = ftp_folder
+
+    def _read_courses(self, university, department):
+        folder = os.path.join(
+            self.ftp_folder,
+            'academy',
+            university,
+            department,
+        )
+        order = 0
+        folders = os.listdir(folder)
+        for course in folders:
+            path = os.path.join(folder, course)
+            if os.path.isdir(path):
+                order = order + 1
+                _update_course(university, department, order, course)
+                self._read_topics(university, department, course)
+
+    def _read_departments(self, university):
+        folder = os.path.join(
+            self.ftp_folder,
+            'academy',
+            university,
+        )
+        folders = os.listdir(folder)
+        for department in folders:
+            path = os.path.join(folder, department)
+            if os.path.isdir(path):
+                _update_department(university, department)
+                self._read_courses(university, department)
+
+    def _read_topics(self, university, department, course):
+        folder = os.path.join(
+            self.ftp_folder,
+            'academy',
+            university,
+            department,
+            course,
+        )
+        order = 0
+        files = os.listdir(folder)
+        files.sort()
+        for topic in files:
+            path = os.path.join(folder, topic)
+            if os.path.isfile(path):
+                order = order + 1
+                _update_topic(
+                    university,
+                    department,
+                    course,
+                    order,
+                    os.path.join(
+                        'academy',
+                        university,
+                        department,
+                        course,
+                        topic,
+                    ),
+                    topic
+                )
 
     def _read_universities(self):
-        folders = os.listdir(self.academy_folder)
+        folder = os.path.join(
+            self.ftp_folder,
+            'academy'
+        )
+        folders = os.listdir(folder)
         for university in folders:
-            path = os.path.join(self.academy_folder, university)
+            path = os.path.join(folder, university)
             if os.path.isdir(path):
                 _update_university(university)
-                _read_departments(path, university)
+                self._read_departments(university)
 
     def update(self):
         """Update the database based on the folder structure."""
