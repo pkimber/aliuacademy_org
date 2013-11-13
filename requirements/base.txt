@@ -8,4 +8,3 @@ docutils
 psycopg2==2.5.1
 PyYAML==3.10
 South==0.8.2
-walkdir
