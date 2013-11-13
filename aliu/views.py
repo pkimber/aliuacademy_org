@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import (
+    DetailView,
     ListView,
 )
 
@@ -81,6 +82,24 @@ class CourseTopicListView(
     def get_queryset(self):
         course = self._get_course()
         return Topic.objects.filter(course=course).order_by('-order')
+
+
+class TopicDetailView(
+        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, DetailView):
+
+    model = Topic
+
+    def _get_topic(self):
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(Topic, pk=pk)
+
+    def get_context_data(self, **kwargs):
+        context = super(TopicDetailView, self).get_context_data(**kwargs)
+        topic = self._get_topic()
+        context.update(dict(
+            topic_list=topic.course.topic_set.order_by('-order').all,
+        ))
+        return context
 
 
 class UniversityListView(

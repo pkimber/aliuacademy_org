@@ -1,25 +1,25 @@
 {% extends "aliu/base.html" %}
 
 {% block sub_title %}
-  Topics
+  Topic
 {% endblock sub_title %}
 
 {% block sub_heading %}
-  Topics
+  Topic
 {% endblock sub_heading %}
 
 {% block content %}
   <div class="pure-g-r">
     <div class="pure-u-1">
-      <a href="{% url "aliu.university.department.list" course.department.university.slug %}">
-        {{ course.department.university.name }}
+      <a href="{% url "aliu.university.department.list" topic.course.department.university.slug %}">
+        {{ topic.course.department.university.name }}
       </a>
       <br />
-      <a href="{% url "aliu.department.course.list" course.department.pk %}">
-        {{ course.department.name }}
+      <a href="{% url "aliu.department.course.list" topic.course.department.pk %}">
+        {{ topic.course.department.name }}
       </a>
       <br />
-      {{ course.name }}
+      {{ topic.course.name }}
     </div>
     <div class="pure-u-1-4">
       <table class="pure-table pure-table-bordered">
@@ -45,9 +45,10 @@
     </div>
     <div class="pure-u-1-4">
       <video width="320" height="240" controls>
-        <source src="movie.mp4" type="video/mp4">
+        <source src="{{ topic.video.url }}" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+      {{ topic.video.url }}
     </div>
   </div>
 {% endblock content %}

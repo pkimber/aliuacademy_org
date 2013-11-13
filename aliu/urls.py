@@ -5,6 +5,7 @@ from django.conf.urls import (
 from .views import (
     CourseTopicListView,
     DepartmentCourseListView,
+    TopicDetailView,
     UniversityDepartmentListView,
     UniversityListView,
 )
@@ -27,5 +28,9 @@ urlpatterns = patterns(
     url(regex=r'^universities/$',
         view=UniversityListView.as_view(),
         name='aliu.university.list'
+        ),
+    url(regex=r'^topic/(?P<pk>\d+)/$',
+        view=TopicDetailView.as_view(),
+        name='aliu.topic.detail'
         ),
 )
