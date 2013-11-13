@@ -17,7 +17,7 @@
             <th>
               {{ department.name }}
               courses at
-              <a href="{% url "aliu.department.list" department.university.slug %}">
+              <a href="{% url "aliu.university.department.list" department.university.slug %}">
                 {{ department.university.name }}
               </a>
             </th>
@@ -27,7 +27,7 @@
           {% for course in course_list %}
             <tr valign="top">
               <td>
-                <a href="{% url "aliu.topic.list" course.pk %}">
+                <a href="{% url "aliu.course.topic.list" course.pk %}">
                   {{ course.name }}
                 </a>
               </td>

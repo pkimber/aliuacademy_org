@@ -11,20 +11,22 @@
 {% block content %}
   <div class="pure-g-r">
     <div class="pure-u-1">
+      <a href="{% url "aliu.university.department.list" course.department.university.slug %}">
+        {{ course.department.university.name }}
+      </a>
+      <br />
+      <a href="{% url "aliu.department.course.list" course.department.pk %}">
+        {{ course.department.name }}
+      </a>
+      <br />
+      {{ course.name }}
+    </div>
+    <div class="pure-u-1-4">
       <table class="pure-table pure-table-bordered">
         <thead>
           <tr>
             <th>
-              {{ course.name }}
-              topics for 
-              <a href="{% url "aliu.course.list" course.department.pk %}">
-                {{ course.department.name }}
-              </a>
-              at
-              <a href="{% url "aliu.department.list" course.department.university.slug %}">
-                {{ course.department.university.name }}
-              </a>
-              </a>
+              Topics
             </th>
           </tr>
         </thead>
@@ -38,6 +40,12 @@
           {% endfor %}
         </tbody>
       </table>
+    </div>
+    <div class="pure-u-1-4">
+      <video width="320" height="240" controls>
+        <source src="movie.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 {% endblock content %}

@@ -55,4 +55,13 @@ class Topic(TimeStampedModel):
     )
     course = models.ForeignKey(Course)
 
+    class Meta:
+        ordering = ('order',)
+        verbose_name = 'Topic'
+        verbose_name_plural = 'Topics'
+        unique_together = ('course', 'video',)
+
+    def __unicode__(self):
+        return unicode('{}'.format(self.name))
+
 reversion.register(Topic)
