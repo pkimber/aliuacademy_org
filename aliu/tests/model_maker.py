@@ -40,11 +40,16 @@ def make_topic(course, order, name, **kwargs):
     )
 
 
-def make_university(slug, name, **kwargs):
+def make_university(slug, folder_name, **kwargs):
+    defaults = {
+        'name': folder_name,
+    }
+    defaults.update(kwargs)
     return clean_and_save(
         University(
             slug=slug,
-            name=name,
+            name=defaults['name'],
+            folder_name=folder_name,
             **kwargs
         )
     )
