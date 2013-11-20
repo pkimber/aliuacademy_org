@@ -61,9 +61,9 @@ class Topic(TimeStampedModel):
     """File stores the Video for the Topic."""
 
     order = models.IntegerField()
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=150)
     video = models.FileField(
-        max_length=200,
+        max_length=300,
         upload_to='video/%Y/%m/%d',
         storage=ftp_file_store,
     )
