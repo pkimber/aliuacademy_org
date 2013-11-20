@@ -76,3 +76,8 @@ Release and Deploy
 ==================
 
 https://github.com/pkimber/docs
+
+::
+
+  chmod -R 755 /home/aliuacademy_org/site
+  chown -R aliuacademy_org:aliuacademy_org /home/aliuacademy_org/site
