@@ -84,10 +84,7 @@ def _update_university(university):
     try:
         University.objects.get(folder_name=university)
     except University.DoesNotExist:
-        make_university(
-            slug=university.lower(),
-            folder_name=university,
-        )
+        make_university(folder_name=university)
 
 
 class FtpReader(object):

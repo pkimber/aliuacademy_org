@@ -14,7 +14,7 @@ class University(TimeStampedModel):
 
     """University e.g. MIT."""
 
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=100)
     name = models.CharField(max_length=100)
     folder_name = models.CharField(max_length=100, unique=True)
 
