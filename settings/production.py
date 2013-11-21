@@ -7,7 +7,9 @@ if get_env_variable_bool('SSL'):
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
-ALLOWED_HOSTS = [get_env_variable('DOMAIN'), ]
+# We are running this site on a LAN so will accept connections from anywhere.
+# 'ALLOWED_HOSTS' will be set to '*' in the vassal when on a LAN
+ALLOWED_HOSTS = [get_env_variable('ALLOWED_HOSTS'), ]
 
 DATABASES = {
     'default': {
