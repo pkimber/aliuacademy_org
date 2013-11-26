@@ -70,7 +70,7 @@ class Topic(TimeStampedModel):
     course = models.ForeignKey(Course)
 
     class Meta:
-        ordering = ('order',)
+        ordering = ('order', 'name')
         verbose_name = 'Topic'
         verbose_name_plural = 'Topics'
         unique_together = ('course', 'video',)

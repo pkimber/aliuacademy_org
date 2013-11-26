@@ -158,7 +158,7 @@ class FtpReader(object):
                     university,
                     department,
                     course,
-                    order,
+                    number_from_string(topic),
                     os.path.join(
                         'academy',
                         university,
