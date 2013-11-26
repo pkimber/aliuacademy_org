@@ -21,7 +21,26 @@ from .models import (
 )
 
 
-class AboutView(BaseMixin, TemplateView):
+class AliuMixin(object):
+
+    def _get_mandela(self):
+        return Simple.objects.get(
+            section__name='mandela',
+            order=0,
+            moderated=True,
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super(AliuMixin, self).get_context_data(
+            **kwargs
+        )
+        context.update(dict(
+            mandela=self._get_mandela(),
+        ))
+        return context
+
+
+class AboutView(AliuMixin, BaseMixin, TemplateView):
 
     template_name = 'aliu/about.html'
 
@@ -131,3 +150,24 @@ class UniversityListView(
         LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, ListView):
 
     model = University
+
+
+class VisionView(AliuMixin, BaseMixin, TemplateView):
+
+    template_name = 'aliu/vision.html'
+
+    def _get_vision(self):
+        return Simple.objects.get(
+            section__name='vision',
+            order=0,
+            moderated=True,
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super(VisionView, self).get_context_data(
+            **kwargs
+        )
+        context.update(dict(
+            vision=self._get_vision(),
+        ))
+        return context

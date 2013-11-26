@@ -38,12 +38,7 @@
     </div>
     <div class="pure-u-1">
       <div class="l-box note">
-        "Education is the great engine of personal development.  It is through
-        education that the daughter of a persant can become a doctor, that a
-        son of a mineworker can become the head of the mine, that a child of
-        farm workers can become the president of a great nation.  It is what
-        we make out of what we have, not what we are given, that separates one
-        person from another." (Nelson Mandela)
+        {{ mandela.title }}
       </div>
     </div>
     <div class="pure-g-r">
@@ -51,7 +46,7 @@
         <div class="pure-menu pure-menu-open">
           <ul>
             <li><a href="{% url 'aliu.about' %}">About us</a></li>
-            <li><a href="#">Our Vision</a></li>
+            <li><a href="{% url 'aliu.vision' %}">Our Vision</a></li>
             <li><a href="#">Sign Up</a></li>
             <li><a href="#">Login</a></li>
             <li><a href="#">About the universities</a></li>
@@ -69,15 +64,5 @@
       </div>
     </div>
   </div>
-  <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui.js"></script>
-  <script>
-    YUI().use('node-base', 'node-event-delegate', function (Y) {
-        // This just makes sure that the href="#" attached to the <a> elements
-        // don't scroll you back up the page.
-        Y.one('body').delegate('click', function (e) {
-            e.preventDefault();
-        }, 'a[href="#"]');
-    });
-  </script>
 </body>
 </html>
