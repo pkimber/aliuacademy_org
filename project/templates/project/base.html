@@ -62,7 +62,7 @@
               </li>
             {% endif %}
             {% if user.is_authenticated %}
-              <li>
+              <li {% if 'academy' in path %}class="pure-menu-selected"{% endif %}>
                 <a href="{% url 'aliu.university.list' %}">Universities</a>
               </li>
             {% endif %}
