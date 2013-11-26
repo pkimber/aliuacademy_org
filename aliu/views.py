@@ -21,7 +21,7 @@ from .models import (
 )
 
 
-class AliuMixin(object):
+class AliuMixin(BaseMixin):
 
     def _get_mandela(self):
         return Simple.objects.get(
@@ -48,7 +48,7 @@ class AliuMixin(object):
         return context
 
 
-class AboutView(AliuMixin, BaseMixin, TemplateView):
+class AboutView(AliuMixin, TemplateView):
 
     template_name = 'aliu/about.html'
 
@@ -63,7 +63,7 @@ class AboutView(AliuMixin, BaseMixin, TemplateView):
 
 
 class DepartmentCourseListView(
-        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, ListView):
+        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, ListView):
 
     model = Course
 
@@ -86,7 +86,7 @@ class DepartmentCourseListView(
 
 
 class UniversityDepartmentListView(
-        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, ListView):
+        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, ListView):
 
     model = Department
 
@@ -109,7 +109,7 @@ class UniversityDepartmentListView(
 
 
 class CourseTopicListView(
-        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, ListView):
+        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, ListView):
 
     model = Topic
 
@@ -130,7 +130,7 @@ class CourseTopicListView(
 
 
 class TopicDetailView(
-        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, DetailView):
+        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, DetailView):
 
     model = Topic
 
@@ -148,12 +148,12 @@ class TopicDetailView(
 
 
 class UniversityListView(
-        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, ListView):
+        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, ListView):
 
     model = University
 
 
-class UniversitiesView(AliuMixin, BaseMixin, TemplateView):
+class UniversitiesView(AliuMixin, TemplateView):
 
     template_name = 'aliu/universities.html'
 
@@ -167,7 +167,7 @@ class UniversitiesView(AliuMixin, BaseMixin, TemplateView):
         return context
 
 
-class VisionView(AliuMixin, BaseMixin, TemplateView):
+class VisionView(AliuMixin, TemplateView):
 
     template_name = 'aliu/vision.html'
 
