@@ -5,6 +5,7 @@ django-reversion==1.8.0
 django-sendfile==0.3.2
 Django==1.6
 docutils
+Pillow==2.2.1
 psycopg2==2.5.1
 PyYAML==3.10
 South==0.8.2

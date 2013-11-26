@@ -3,6 +3,7 @@ from django.conf.urls import (
 )
 
 from .views import (
+    AboutView,
     CourseTopicListView,
     DepartmentCourseListView,
     TopicDetailView,
@@ -13,6 +14,10 @@ from .views import (
 
 urlpatterns = patterns(
     '',
+    url(regex=r'^about/$',
+        view=AboutView.as_view(),
+        name='aliu.about'
+        ),
     url(regex=r'^department/(?P<pk>\d+)/$',
         view=DepartmentCourseListView.as_view(),
         name='aliu.department.course.list'

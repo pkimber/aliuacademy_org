@@ -50,7 +50,7 @@
       <div class="pure-u-1-4 menu-box">
         <div class="pure-menu pure-menu-open">
           <ul>
-            <li><a href="#">About us</a></li>
+            <li><a href="{% url 'aliu.about' %}">About us</a></li>
             <li><a href="#">Our Vision</a></li>
             <li><a href="#">Sign Up</a></li>
             <li><a href="#">Login</a></li>
@@ -59,11 +59,13 @@
         </div>
       </div>
       <div class="pure-u-3-4 menu-box">
-        <video width="550" controls>
-          <source src="{{ topic.video.url }}" type="video/mp4">
-          <source src="{{ topic.video.url }}" type="video/ogg">
-          Your browser does not support the video tag.
-        </video>
+        {% block content %}
+          <video width="550" controls>
+            <source src="{{ topic.video.url }}" type="video/mp4">
+            <source src="{{ topic.video.url }}" type="video/ogg">
+            Your browser does not support the video tag.
+          </video>
+        {% endblock content %}
       </div>
     </div>
   </div>

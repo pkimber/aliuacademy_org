@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import (
     DetailView,
     ListView,
+    TemplateView,
 )
 
 from braces.views import (
@@ -10,6 +11,7 @@ from braces.views import (
 )
 
 from base.view_utils import BaseMixin
+from cms.models import Simple
 
 from .models import (
     Course,
@@ -17,6 +19,27 @@ from .models import (
     Topic,
     University,
 )
+
+
+class AboutView(BaseMixin, TemplateView):
+
+    template_name = 'aliu/about.html'
+
+    def _get_about(self):
+        return Simple.objects.get(
+            section__name='about',
+            order=0,
+            moderated=True,
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super(AboutView, self).get_context_data(
+            **kwargs
+        )
+        context.update(dict(
+            about=self._get_about(),
+        ))
+        return context
 
 
 class DepartmentCourseListView(
@@ -29,7 +52,9 @@ class DepartmentCourseListView(
         return get_object_or_404(Department, pk=pk)
 
     def get_context_data(self, **kwargs):
-        context = super(DepartmentCourseListView, self).get_context_data(**kwargs)
+        context = super(DepartmentCourseListView, self).get_context_data(
+            **kwargs
+        )
         context.update(dict(
             department=self._get_department(),
         ))
