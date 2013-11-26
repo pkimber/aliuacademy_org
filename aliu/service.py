@@ -1,6 +1,7 @@
 """Service class."""
 
 import os
+import re
 
 from .models import (
     Course,
@@ -27,6 +28,15 @@ class AcademyError(Exception):
 
     def __str__(self):
         return repr('%s, %s' % (self.__class__.__name__, self.value))
+
+
+def number_from_string(text):
+    """Return the first number from a string."""
+    items = re.findall(r'\d+', text)
+    if items:
+        return int(items[0])
+    else:
+        raise AcademyError("'{}' does not contain a number".format(text))
 
 
 def _update_course(university, department, order, course):

@@ -2,7 +2,11 @@ from django.test import TestCase
 
 import os
 
-from aliu.service import FtpReader
+from aliu.service import (
+    AcademyError,
+    FtpReader,
+    number_from_string,
+)
 
 
 class TestServiceFtpReader(TestCase):
@@ -19,3 +23,14 @@ class TestServiceFtpReader(TestCase):
 
     def test_read(self):
         FtpReader(self.folder).update()
+
+    def test_number_from_string(self):
+        result = number_from_string('abc123')
+        self.assertEquals(123, result)
+
+    def test_number_from_string_except(self):
+        self.assertRaises(AcademyError, number_from_string, 'abc')
+
+    def test_number_from_string_two_number(self):
+        result = number_from_string('abc456xyz123red')
+        self.assertEquals(456, result)
