@@ -30,6 +30,14 @@ class AliuMixin(object):
             moderated=True,
         )
 
+    def _get_simple(self, section):
+        return get_object_or_404(
+            Simple,
+            section__name=section,
+            order=0,
+            moderated=True,
+        )
+
     def get_context_data(self, **kwargs):
         context = super(AliuMixin, self).get_context_data(
             **kwargs
@@ -44,19 +52,12 @@ class AboutView(AliuMixin, BaseMixin, TemplateView):
 
     template_name = 'aliu/about.html'
 
-    def _get_about(self):
-        return Simple.objects.get(
-            section__name='about',
-            order=0,
-            moderated=True,
-        )
-
     def get_context_data(self, **kwargs):
         context = super(AboutView, self).get_context_data(
             **kwargs
         )
         context.update(dict(
-            about=self._get_about(),
+            about=self._get_simple('about'),
         ))
         return context
 
@@ -152,22 +153,29 @@ class UniversityListView(
     model = University
 
 
+class UniversitiesView(AliuMixin, BaseMixin, TemplateView):
+
+    template_name = 'aliu/universities.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UniversitiesView, self).get_context_data(
+            **kwargs
+        )
+        context.update(dict(
+            universities=self._get_simple('universities'),
+        ))
+        return context
+
+
 class VisionView(AliuMixin, BaseMixin, TemplateView):
 
     template_name = 'aliu/vision.html'
-
-    def _get_vision(self):
-        return Simple.objects.get(
-            section__name='vision',
-            order=0,
-            moderated=True,
-        )
 
     def get_context_data(self, **kwargs):
         context = super(VisionView, self).get_context_data(
             **kwargs
         )
         context.update(dict(
-            vision=self._get_vision(),
+            vision=self._get_simple('vision'),
         ))
         return context

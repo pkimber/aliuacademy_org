@@ -72,6 +72,27 @@ def _make_mandela():
     )
 
 
+def _make_universities():
+    universities = make_section('universities')
+    make_simple(
+        section=universities,
+        order=0,
+        title=(
+            "Our database of educational videos are from some of the very "
+            "best institutions in the world offering massive online open "
+            "courses. The universities include MIT, Harvard, University of "
+            "Califonia Berkeley, IIT India, Yale, Stanford. Most of these "
+            "universities have pioneered some of the greatest inventions on "
+            "earth and have trained some of the richest, most powerful and "
+            "most influential people on earth hence a real class lecture "
+            "coming from such schools for FREE is a gift that cannot be "
+            "priced. We hope to continue to expand this database and bring "
+            "world class educational materials to the end of the earth"
+        ),
+        moderated=True,
+    )
+
+
 def _make_vision():
     vision = make_section('vision')
     make_simple(
@@ -100,5 +121,6 @@ class Command(BaseCommand):
         default_scenario_aliu()
         _make_about()
         _make_mandela()
+        _make_universities()
         _make_vision()
         print("Created 'aliuacademy_org' demo data...")

@@ -9,6 +9,7 @@ from .views import (
     TopicDetailView,
     UniversityDepartmentListView,
     UniversityListView,
+    UniversitiesView,
     VisionView,
 )
 
@@ -31,13 +32,17 @@ urlpatterns = patterns(
         view=CourseTopicListView.as_view(),
         name='aliu.course.topic.list'
         ),
-    url(regex=r'^universities/$',
+    url(regex=r'^university/$',
         view=UniversityListView.as_view(),
         name='aliu.university.list'
         ),
     url(regex=r'^topic/(?P<pk>\d+)/$',
         view=TopicDetailView.as_view(),
         name='aliu.topic.detail'
+        ),
+    url(regex=r'^universities/$',
+        view=UniversitiesView.as_view(),
+        name='aliu.universities'
         ),
     url(regex=r'^vision/$',
         view=VisionView.as_view(),
