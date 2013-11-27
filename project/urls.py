@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from .views import HomeView
+from aliu.views import AboutView
 
 
 admin.autodiscover()
@@ -14,14 +15,11 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(regex=r'^$',
-        view=HomeView.as_view(),
+        view=AboutView.as_view(),
         name='project.home'
         ),
     url(regex=r'^',
         view=include('login.urls')
-        ),
-    url(regex=r'^accounts/',
-        view=include('registration.backends.default.urls')
         ),
     url(regex=r'^admin/',
         view=include(admin.site.urls)

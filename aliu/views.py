@@ -7,7 +7,6 @@ from django.views.generic import (
 
 from braces.views import (
     LoginRequiredMixin,
-    StaffuserRequiredMixin,
 )
 
 from base.view_utils import BaseMixin
@@ -63,7 +62,7 @@ class AboutView(AliuMixin, TemplateView):
 
 
 class DepartmentCourseListView(
-        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, ListView):
+        LoginRequiredMixin, AliuMixin, ListView):
 
     model = Course
 
@@ -86,7 +85,7 @@ class DepartmentCourseListView(
 
 
 class UniversityDepartmentListView(
-        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, ListView):
+        LoginRequiredMixin, AliuMixin, ListView):
 
     model = Department
 
@@ -109,7 +108,7 @@ class UniversityDepartmentListView(
 
 
 class CourseTopicListView(
-        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, ListView):
+        LoginRequiredMixin, AliuMixin, ListView):
 
     model = Topic
 
@@ -130,7 +129,7 @@ class CourseTopicListView(
 
 
 class TopicDetailView(
-        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, DetailView):
+        LoginRequiredMixin, AliuMixin, DetailView):
 
     model = Topic
 
@@ -148,7 +147,7 @@ class TopicDetailView(
 
 
 class UniversityListView(
-        LoginRequiredMixin, StaffuserRequiredMixin, AliuMixin, ListView):
+        LoginRequiredMixin, AliuMixin, ListView):
 
     model = University
 
