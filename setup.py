@@ -24,6 +24,8 @@ setup(
     package_data={
         'project': [
             'static/*.*',
+            'static/css/*.*',
+            'static/css/project/*.*',
             'static/img/*.*',
             'static/img/project/*.*',
             'templates/*.*',
@@ -35,7 +37,7 @@ setup(
             'templates/aliu/*.*',
         ],
     },
-    version='0.0.09',
+    version='0.0.10',
     description='Aliu Academy web site',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
