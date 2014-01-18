@@ -20,7 +20,7 @@ FTP_STATIC_DIR = os.path.normpath(os.path.join(
     'data',
     'ftp_static_dir',
 ))
-# Start a local web server in the 'academy' folder.
+# Start a local web server in the 'aliu' folder.
 FTP_STATIC_URL = 'http://localhost:8080/'
 
 # https://docs.djangoproject.com/en/1.5/howto/static-files/#serving-files-uploaded-by-a-user
