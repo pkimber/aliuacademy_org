@@ -39,19 +39,17 @@
         </div>
       </div>
     </div>
-    {% if mandela %}
-      <div class="pure-u-1">
-        <div class="l-box note">
-          Education is the great engine of personal development. It is
-          through education that the daughter of a persant can become a
-          doctor, that a son of a mineworker can become the head of the
-          mine, that a child of farm workers can become the president of
-          a great nation. It is what we make out of what we have, not
-          what we are given, that separates one person from another.
-          (Nelson Mandela)
-        </div>
+    <div class="pure-u-1">
+      <div class="l-box note">
+        Education is the great engine of personal development. It is
+        through education that the daughter of a persant can become a
+        doctor, that a son of a mineworker can become the head of the
+        mine, that a child of farm workers can become the president of
+        a great nation. It is what we make out of what we have, not
+        what we are given, that separates one person from another.
+        (Nelson Mandela)
       </div>
-    {% endif %}
+    </div>
     <div class="pure-g-r">
       <div class="pure-u-1-4 menu-box">
         <div class="pure-menu pure-menu-open">
@@ -85,13 +83,8 @@
           </ul>
         </div>
       </div>
-      <div class="pure-u-3-4 menu-box">
+      <div class="pure-u-3-4">
         {% block content %}
-          <video width="550" controls>
-            <source src="{{ topic.video.url }}" type="video/mp4">
-            <source src="{{ topic.video.url }}" type="video/ogg">
-            Your browser does not support the video tag.
-          </video>
         {% endblock content %}
       </div>
     </div>
