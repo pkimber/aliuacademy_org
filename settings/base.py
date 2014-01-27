@@ -152,7 +152,6 @@ INSTALLED_APPS = (
     'project',
     'aliu',
     'base',
-    'cms',
     'login',
 )
 

@@ -5,12 +5,9 @@ from django.views.generic import (
     TemplateView,
 )
 
-from braces.views import (
-    LoginRequiredMixin,
-)
+from braces.views import LoginRequiredMixin
 
 from base.view_utils import BaseMixin
-from cms.models import Simple
 
 from .models import (
     Course,
@@ -20,49 +17,13 @@ from .models import (
 )
 
 
-class AliuMixin(BaseMixin):
-
-    def _get_mandela(self):
-        return Simple.objects.get(
-            section__name='mandela',
-            order=0,
-            moderated=True,
-        )
-
-    def _get_simple(self, section):
-        return get_object_or_404(
-            Simple,
-            section__name=section,
-            order=0,
-            moderated=True,
-        )
-
-    def get_context_data(self, **kwargs):
-        context = super(AliuMixin, self).get_context_data(
-            **kwargs
-        )
-        context.update(dict(
-            mandela=self._get_mandela(),
-        ))
-        return context
-
-
-class AboutView(AliuMixin, TemplateView):
+class AboutView(BaseMixin, TemplateView):
 
     template_name = 'aliu/about.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(AboutView, self).get_context_data(
-            **kwargs
-        )
-        context.update(dict(
-            about=self._get_simple('about'),
-        ))
-        return context
-
 
 class DepartmentCourseListView(
-        LoginRequiredMixin, AliuMixin, ListView):
+        LoginRequiredMixin, BaseMixin, ListView):
 
     model = Course
 
@@ -85,7 +46,7 @@ class DepartmentCourseListView(
 
 
 class UniversityDepartmentListView(
-        LoginRequiredMixin, AliuMixin, ListView):
+        LoginRequiredMixin, BaseMixin, ListView):
 
     model = Department
 
@@ -108,7 +69,7 @@ class UniversityDepartmentListView(
 
 
 class CourseTopicListView(
-        LoginRequiredMixin, AliuMixin, ListView):
+        LoginRequiredMixin, BaseMixin, ListView):
 
     model = Topic
 
@@ -129,7 +90,7 @@ class CourseTopicListView(
 
 
 class TopicDetailView(
-        LoginRequiredMixin, AliuMixin, DetailView):
+        LoginRequiredMixin, BaseMixin, DetailView):
 
     model = Topic
 
@@ -147,34 +108,16 @@ class TopicDetailView(
 
 
 class UniversityListView(
-        LoginRequiredMixin, AliuMixin, ListView):
+        LoginRequiredMixin, BaseMixin, ListView):
 
     model = University
 
 
-class UniversitiesView(AliuMixin, TemplateView):
+class UniversitiesView(BaseMixin, TemplateView):
 
     template_name = 'aliu/universities.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(UniversitiesView, self).get_context_data(
-            **kwargs
-        )
-        context.update(dict(
-            universities=self._get_simple('universities'),
-        ))
-        return context
 
-
-class VisionView(AliuMixin, TemplateView):
+class VisionView(BaseMixin, TemplateView):
 
     template_name = 'aliu/vision.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(VisionView, self).get_context_data(
-            **kwargs
-        )
-        context.update(dict(
-            vision=self._get_simple('vision'),
-        ))
-        return context
