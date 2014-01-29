@@ -1,6 +1,13 @@
 aliuacademy.org
 ***************
 
+Documentation
+=============
+
+.. note:: Documentation for this project is in the ``doc`` folder.
+
+https://github.com/pkimber/docs
+
 Development
 ===========
 
@@ -69,7 +76,4 @@ Usage
 Release and Deploy
 ==================
 
-https://github.com/pkimber/docs::
-
-  chmod -R 755 /home/aliuacademy_org/site
-  chown -R aliuacademy_org:aliuacademy_org /home/aliuacademy_org/site
+https://github.com/pkimber/docs
