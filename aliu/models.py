@@ -1,5 +1,7 @@
 """Database models for Aliu's Academy."""
 
+import os
+
 from django.db import models
 
 import reversion
@@ -77,5 +79,9 @@ class Topic(TimeStampedModel):
 
     def __unicode__(self):
         return unicode('{}'.format(self.name))
+
+    def download_file_name(self):
+        return os.path.basename(self.video.name)
+
 
 reversion.register(Topic)
