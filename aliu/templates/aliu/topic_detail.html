@@ -36,9 +36,11 @@
           {% for topic in topic_list %}
             <tr valign="top">
               <td>
-                <a href="{% url "aliu.topic.detail" topic.pk %}">
-                  {{ topic.name }}
-                </a>
+                <small>
+                  <a href="{% url "aliu.topic.detail" topic.pk %}">
+                    {{ topic.name }}
+                  </a>
+                </small>
               </td>
             </tr>
           {% endfor %}
@@ -51,12 +53,17 @@
         <source src="{{ topic.video.url }}" type="video/ogg">
         Your browser does not support the video tag.
       </video>
-      <p>
-        {{ topic.name }}
-        <a href="{{ topic.video.url }}">
-          Download
-        </a>
-      </p>
+      <small>{{ topic.name }}</small>
+      <div class="pure-menu pure-menu-open pure-menu-horizontal">
+        <ul>
+          <li>
+            <a href="{{ topic.video.url }}">
+              <i class="fa fa-cloud-download"></i>
+              Download
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 {% endblock content %}
