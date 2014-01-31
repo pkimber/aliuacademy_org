@@ -9,26 +9,22 @@
 {% endblock sub_heading %}
 
 {% block content %}
-  <div class="pure-g-r">
-    <div class="pure-u-1">
-      <table class="pure-table pure-table-bordered">
-        <thead>
-          <tr>
-            <th>Universities</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for university in university_list %}
-            <tr valign="top">
-              <td>
-                <a href="{% url "aliu.university.department.list" university.slug %}">
-                  {{ university.name }}
-                </a>
-              </td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <table class="pure-table pure-table-bordered">
+    <thead>
+      <tr>
+        <th>Universities</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for university in university_list %}
+        <tr valign="top">
+          <td>
+            <a href="{% url "aliu.university.department.list" university.slug %}">
+              {{ university.name }}
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock content %}
