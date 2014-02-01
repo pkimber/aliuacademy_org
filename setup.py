@@ -37,7 +37,7 @@ setup(
             'templates/aliu/*.*',
         ],
     },
-    version='0.0.15',
+    version='0.0.16',
     description='Aliu Academy web site',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
