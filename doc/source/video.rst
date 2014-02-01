@@ -18,3 +18,8 @@ After uploading videos, update permissions as follows::
   find /home/aliuacademy_org/site -type f -exec chmod 0664 {} \;
   find /home/aliuacademy_org/site -type d -exec chmod 2775 {} \;
   find /home/aliuacademy_org/site -exec chown aliuacademy_org:web {} \;
+
+To add the videos to the web site::
+
+  sudo -i -u web
+  aliuacademy_org.sh init_app_aliu
