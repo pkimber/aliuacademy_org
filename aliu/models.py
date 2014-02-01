@@ -20,6 +20,9 @@ class University(TimeStampedModel):
     name = models.CharField(max_length=100)
     folder_name = models.CharField(max_length=100, unique=True)
 
+    class Meta:
+        ordering = ('slug',)
+
 reversion.register(University)
 
 
