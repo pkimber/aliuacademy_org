@@ -26,6 +26,7 @@ MANIFEST
 .coverage
 .tox
 nosetests.xml
+venv-*
 
 # misc
 logfile
@@ -40,3 +41,6 @@ temp.db
 .mr.developer.cfg
 .project
 .pydevproject
+
+# dev
+.cache
