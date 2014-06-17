@@ -1,3 +1,6 @@
+# -*- encoding: utf-8 -*-
+from __future__ import unicode_literals
+
 """Create model instances in the database."""
 import os
 
@@ -53,7 +56,7 @@ def make_topic(course, order, file_path, **kwargs):
 def make_university(folder_name, **kwargs):
     """Create a 'University' in the database and return it."""
     defaults = dict(
-        slug=slugify(unicode(folder_name)),
+        slug=slugify(folder_name),
         name=folder_name,
         folder_name=folder_name,
     )

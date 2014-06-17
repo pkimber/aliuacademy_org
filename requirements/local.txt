@@ -1,8 +1,12 @@
 -r base.txt
-fabric
-gitpython==0.3.1-beta2
+-e .
+-e ../../app/base
+-e ../../app/login
+gitpython
 hgapi
 ipdb
+IPy
 pytest-django
-sphinx
+pytest-flakes
+pytest-pep8
 walkdir

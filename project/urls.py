@@ -1,9 +1,16 @@
+# -*- encoding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.conf import settings
-from django.conf.urls import include
-from django.conf.urls import patterns
-from django.conf.urls import url
+from django.conf.urls import (
+    include,
+    patterns,
+    url,
+)
 from django.conf.urls.static import static
 from django.contrib import admin
+
+from login.views import RegisterCreateView
 
 from aliu.views import AboutView
 
@@ -25,6 +32,10 @@ urlpatterns = patterns(
         ),
     url(regex=r'^aliu/',
         view=include('aliu.urls')
+        ),
+    url(regex=r'^accounts/register/$',
+        view=RegisterCreateView.as_view(),
+        name='register'
         ),
 )
 

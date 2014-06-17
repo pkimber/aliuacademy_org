@@ -1,3 +1,6 @@
+# -*- encoding: utf-8 -*-
+
+from __future__ import unicode_literals
 """Set-up the default scenario for demo and testing purposes."""
 
 import os

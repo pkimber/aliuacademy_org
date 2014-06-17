@@ -1,3 +1,6 @@
+# -*- encoding: utf-8 -*-
+
+from __future__ import unicode_literals
 """Database models for Aliu's Academy."""
 
 import os
@@ -80,7 +83,7 @@ class Topic(TimeStampedModel):
         verbose_name_plural = 'Topics'
         unique_together = ('course', 'video',)
 
-    def __unicode__(self):
+    def __str__(self):
         return unicode('{}'.format(self.name))
 
     def download_file_name(self):

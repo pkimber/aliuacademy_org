@@ -1,3 +1,6 @@
+# -*- encoding: utf-8 -*-
+
+from __future__ import unicode_literals
 """
 Django settings for app project.
 """
@@ -15,10 +18,10 @@ def get_env_variable(key):
     Copied from Django two scoops book
     """
     try:
-        return os.environ.get(key)
+        return os.environ[key]
     except KeyError:
         error_msg = "Set the {} env variable".format(key)
-        print 'ImproperlyConfigured: {}'.format(error_msg)
+        print('ImproperlyConfigured: {}'.format(error_msg))
         raise ImproperlyConfigured(error_msg)
 
 
@@ -38,7 +41,7 @@ def get_env_variable_bool(key):
             "The {} variable must be set to 'True'"
             "or 'False': {}".format(key, result)
         )
-        print 'ImproperlyConfigured: {}'.format(error_msg)
+        print('ImproperlyConfigured: {}'.format(error_msg))
         raise ImproperlyConfigured(error_msg)
     return result
 

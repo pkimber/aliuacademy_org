@@ -1,3 +1,6 @@
+# -*- encoding: utf-8 -*-
+
+from __future__ import unicode_literals
 """Service class."""
 
 import os
@@ -42,7 +45,7 @@ def number_from_string(text):
 def _update_course(university, department, order, course):
     univ = University.objects.get(folder_name=university)
     dept = Department.objects.get(university=univ, folder_name=department)
-    print 'Course: {}'.format(course)
+    print('Course: {}'.format(course))
     try:
         Course.objects.get(
             department=dept,
@@ -60,7 +63,7 @@ def _update_topic(university, department, course, order, path, topic):
     univ = University.objects.get(folder_name=university)
     dept = Department.objects.get(university=univ, folder_name=department)
     cour = Course.objects.get(department=dept, folder_name=course)
-    print 'Topic: {}'.format(topic)
+    print('Topic: {}'.format(topic))
     try:
         Topic.objects.get(
             course=cour,
@@ -76,7 +79,7 @@ def _update_topic(university, department, course, order, path, topic):
 
 def _update_department(university, department):
     uni = University.objects.get(folder_name=university)
-    print 'Department: {}'.format(department)
+    print('Department: {}'.format(department))
     try:
         Department.objects.get(
             university=uni,
@@ -90,7 +93,7 @@ def _update_department(university, department):
 
 
 def _update_university(university):
-    print 'University: {}'.format(university)
+    print('University: {}'.format(university))
     try:
         University.objects.get(folder_name=university)
     except University.DoesNotExist:
