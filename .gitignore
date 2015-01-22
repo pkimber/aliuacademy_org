@@ -23,16 +23,11 @@ pip-log.txt
 MANIFEST
 
 # Unit test / coverage reports
+.cache/
 .coverage
+logfile
 .tox
 nosetests.xml
-venv-*
-
-# misc
-logfile
-media
-media-private
-temp.db
 
 # Translations
 *.mo
@@ -44,3 +39,13 @@ temp.db
 
 # dev
 .cache
+logfile
+logfile.*
+media
+media-private
+temp.db
+venv-*
+web_static
+
+# private info
+.private

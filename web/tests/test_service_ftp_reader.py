@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
+
 from django.test import TestCase
 
 import os
 
-from aliu.service import (
+from web.service import (
     AcademyError,
     FtpReader,
     number_from_string,

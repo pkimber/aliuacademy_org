@@ -1,12 +1,12 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
+
 from django.test import TestCase
 
 import os
 
-from aliu.models import Topic
-from aliu.tests.model_maker import (
+from web.models import Topic
+from web.tests.model_maker import (
     make_course,
     make_department,
     make_topic,

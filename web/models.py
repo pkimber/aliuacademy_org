@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
+
 """Database models for Aliu's Academy."""
 
 import os
@@ -88,6 +88,5 @@ class Topic(TimeStampedModel):
 
     def download_file_name(self):
         return os.path.basename(self.video.name)
-
 
 reversion.register(Topic)

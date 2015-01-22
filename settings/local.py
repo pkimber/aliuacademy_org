@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
 """Local settings (for development)."""
 
@@ -7,6 +6,7 @@ from .base import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+TESTING = False
 THUMBNAIL_DEBUG = DEBUG
 
 SESSION_COOKIE_SECURE = False
@@ -18,7 +18,7 @@ TEMPLATE_STRING_IF_INVALID = '**** INVALID EXPRESSION: %s ****'
 FTP_STATIC_DIR = os.path.normpath(os.path.join(
     os.path.dirname(os.path.realpath(__file__)),
     '..',
-    'aliu',
+    'web',
     'tests',
     'data',
     'ftp_static_dir',

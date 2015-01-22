@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
-
 from __future__ import unicode_literals
+
 """Service class."""
 
 import os
@@ -13,7 +13,7 @@ from .models import (
     University,
 )
 
-from aliu.tests.model_maker import (
+from web.tests.model_maker import (
     make_course,
     make_department,
     make_topic,

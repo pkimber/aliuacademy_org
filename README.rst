@@ -30,17 +30,11 @@ Testing
 Usage
 -----
 
-::
+To set-up a demo database for development::
 
-  py.test -x && \
-      touch temp.db && rm temp.db && \
-      django-admin.py syncdb --noinput && \
-      django-admin.py migrate --all --noinput && \
-      django-admin.py demo_data_login && \
-      django-admin.py demo_data_aliu && \
-      django-admin.py runserver
+  ./init_test.sh
 
 Release and Deploy
 ==================
 
-https://django-dev-and-deploy-using-salt.readthedocs.org/
+https://www.pkimber.net/open/

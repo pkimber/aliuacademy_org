@@ -8,7 +8,7 @@ from django.utils.text import slugify
 
 from base.tests.model_maker import clean_and_save
 
-from aliu.models import (
+from web.models import (
     Course,
     Department,
     Topic,
