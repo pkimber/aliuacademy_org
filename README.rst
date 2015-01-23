@@ -40,6 +40,10 @@ Click *Login*::
   Username      web
   Password      letmein
 
+.. note:: The videos in the ``web/tests/data/ftp_static_dir`` folders are not
+          actual videos.  I think if you replace them with *proper* videos they
+          will play (although this didn't work for me just now)!
+
 Documentation
 =============
 
