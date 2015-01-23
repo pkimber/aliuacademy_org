@@ -20,7 +20,7 @@ def get_readme():
 
 setup(
     name='pkimber-aliuacademy-org',
-    packages=['project', 'project.management', 'project.management.commands', 'settings', 'aliu', 'aliu.tests', 'aliu.management', 'aliu.management.commands'],
+    packages=['project', 'project.management', 'project.management.commands', 'settings', 'web', 'web.tests', 'web.management', 'web.management.commands'],
     package_data={
         'project': [
             'static/*.*',
@@ -32,9 +32,9 @@ setup(
             'templates/project/*.*',
         ],
 
-        'aliu': [
+        'web': [
             'templates/*.*',
-            'templates/aliu/*.*',
+            'templates/web/*.*',
         ],
     },
     version='0.0.16',

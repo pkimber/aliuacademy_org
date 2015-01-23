@@ -13,13 +13,6 @@ from .models import (
     University,
 )
 
-from web.tests.model_maker import (
-    make_course,
-    make_department,
-    make_topic,
-    make_university,
-)
-
 
 class AcademyError(Exception):
 
@@ -52,7 +45,7 @@ def _update_course(university, department, order, course):
             folder_name=course
         )
     except Course.DoesNotExist:
-        make_course(
+        Course.objects.create_course(
             department=dept,
             order=order,
             folder_name=course,
@@ -70,7 +63,7 @@ def _update_topic(university, department, course, order, path, topic):
             video=path,
         )
     except Topic.DoesNotExist:
-        make_topic(
+        Topic.objects.create_topic(
             course=cour,
             order=order,
             file_path=path,
@@ -86,7 +79,7 @@ def _update_department(university, department):
             folder_name=department
         )
     except Department.DoesNotExist:
-        make_department(
+        Department.objects.create_department(
             university=uni,
             folder_name=department,
         )
@@ -97,7 +90,7 @@ def _update_university(university):
     try:
         University.objects.get(folder_name=university)
     except University.DoesNotExist:
-        make_university(folder_name=university)
+        University.objects.create_university(folder_name=university)
 
 
 class FtpReader(object):

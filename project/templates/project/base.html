@@ -46,14 +46,14 @@
         <div class="pure-menu pure-menu-open">
           <ul>
             <li {% if 'about' in path %}class="pure-menu-selected"{% endif %}>
-              <a href="{% url 'aliu.about' %}">About us</a>
+              <a href="{% url 'web.about' %}">About us</a>
             </li>
             <li {% if 'vision' in path %}class="pure-menu-selected"{% endif %}>
-              <a href="{% url 'aliu.vision' %}">Our Vision</a>
+              <a href="{% url 'web.vision' %}">Our Vision</a>
             </li>
             {% if user.is_authenticated %}
               <li {% if 'academy' in path %}class="pure-menu-selected"{% endif %}>
-                <a href="{% url 'aliu.university.list' %}">Universities</a>
+                <a href="{% url 'web.university.list' %}">Universities</a>
               </li>
             {% endif %}
             {% if user.is_authenticated %}
@@ -69,7 +69,7 @@
               </li>
             {% endif %}
             <li {% if 'universities' in path %}class="pure-menu-selected"{% endif %}>
-              <a href="{% url 'aliu.universities' %}">About the universities</a>
+              <a href="{% url 'web.universities' %}">About the universities</a>
             </li>
           </ul>
         </div>

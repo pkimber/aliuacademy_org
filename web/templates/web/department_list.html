@@ -1,4 +1,4 @@
-{% extends "aliu/base.html" %}
+{% extends 'web/base.html' %}
 
 {% block sub_title %}
   Departments
@@ -23,7 +23,7 @@
           {% for department in department_list %}
             <tr valign="top">
               <td>
-                <a href="{% url "aliu.department.course.list" department.pk %}">
+                <a href="{% url 'web.department.course.list' department.pk %}">
                   {{ department.name }}
                 </a>
               </td>

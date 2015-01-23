@@ -12,7 +12,7 @@ from django.contrib import admin
 
 from login.views import RegisterCreateView
 
-from aliu.views import AboutView
+from web.views import AboutView
 
 
 admin.autodiscover()
@@ -30,8 +30,8 @@ urlpatterns = patterns(
     url(regex=r'^admin/',
         view=include(admin.site.urls)
         ),
-    url(regex=r'^aliu/',
-        view=include('aliu.urls')
+    url(regex=r'^web/',
+        view=include('web.urls')
         ),
     url(regex=r'^accounts/register/$',
         view=RegisterCreateView.as_view(),

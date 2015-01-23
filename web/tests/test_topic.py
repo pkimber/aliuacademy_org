@@ -3,26 +3,23 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
-import os
-
-from web.models import Topic
-from web.tests.model_maker import (
-    make_course,
-    make_department,
-    make_topic,
-    make_university,
+from web.models import (
+    Course,
+    Department,
+    Topic,
+    University,
 )
 
 
 class TestTopic(TestCase):
 
     def test_download_file_name(self):
-        uni = make_university('Exeter')
-        dept = make_department(uni, 'exeter')
-        course = make_course(dept, 1, 'economics')
-        topic = make_topic(
+        uni = University.objects.create_university('Exeter')
+        dept = Department.objects.create_department(uni, 'exeter')
+        course = Course.objects.create_course(dept, 1, 'economics')
+        topic = Topic.objects.create_topic(
             course=course,
             order=1,
             file_path='/home/patrick/video.mp4',
         )
-        self.assertEquals('video.mp4', topic.download_file_name())
+        assert 'video.mp4' == topic.download_file_name()

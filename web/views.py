@@ -22,7 +22,7 @@ from .models import (
 
 class AboutView(BaseMixin, TemplateView):
 
-    template_name = 'aliu/about.html'
+    template_name = 'web/about.html'
 
 
 class DepartmentCourseListView(
@@ -118,9 +118,9 @@ class UniversityListView(
 
 class UniversitiesView(BaseMixin, TemplateView):
 
-    template_name = 'aliu/universities.html'
+    template_name = 'web/universities.html'
 
 
 class VisionView(BaseMixin, TemplateView):
 
-    template_name = 'aliu/vision.html'
+    template_name = 'web/vision.html'

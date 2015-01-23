@@ -1,4 +1,4 @@
-{% extends "aliu/base.html" %}
+{% extends 'web/base.html' %}
 
 {% block sub_title %}
   Topic
@@ -11,11 +11,11 @@
 {% block content %}
   <div class="pure-g-r">
     <div class="pure-u-1">
-      <a href="{% url "aliu.university.department.list" topic.course.department.university.slug %}">
+      <a href="{% url 'web.university.department.list' topic.course.department.university.slug %}">
         {{ topic.course.department.university.name }}
       </a>
       <br />
-      <a href="{% url "aliu.department.course.list" topic.course.department.pk %}">
+      <a href="{% url 'web.department.course.list' topic.course.department.pk %}">
         {{ topic.course.department.name }}
       </a>
       <br />
@@ -37,7 +37,7 @@
             <tr valign="top">
               <td>
                 <small>
-                  <a href="{% url "aliu.topic.detail" topic.pk %}">
+                  <a href="{% url 'web.topic.detail' topic.pk %}">
                     {{ topic.name }}
                   </a>
                 </small>

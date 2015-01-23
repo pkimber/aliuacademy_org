@@ -29,11 +29,11 @@ class TestServiceFtpReader(TestCase):
 
     def test_number_from_string(self):
         result = number_from_string('abc123')
-        self.assertEquals(123, result)
+        assert 123 == result
 
     def test_number_from_string_except(self):
-        self.assertRaises(AcademyError, number_from_string, 'abc')
+        with self.assertRaises(AcademyError):
+            number_from_string('abc')
 
     def test_number_from_string_two_number(self):
-        result = number_from_string('abc456xyz123red')
-        self.assertEquals(456, result)
+        assert 456 == number_from_string('abc456xyz123red')

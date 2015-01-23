@@ -24,7 +24,6 @@ Testing
 
 ::
 
-  find . -name '*.pyc' -delete
   py.test -x
 
 Usage
@@ -32,7 +31,22 @@ Usage
 
 To set-up a demo database for development::
 
-  ./init_test.sh
+  ./init_dev.sh
+
+Browse to http://localhost:8000/
+
+Click *Login*::
+
+  Username      web
+  Password      letmein
+
+Documentation
+=============
+
+The documentation can be found in the ``docs`` folder.  To build the
+documentation::
+
+  cd docs && make html && cd .. && firefox docs/build/html/index.html &
 
 Release and Deploy
 ==================

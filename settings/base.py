@@ -149,7 +149,7 @@ INSTALLED_APPS = (
 
 # URL where requests are redirected after login when the contrib.auth.login
 # view gets no next parameter.
-LOGIN_REDIRECT_URL = reverse_lazy('aliu.university.list')
+LOGIN_REDIRECT_URL = reverse_lazy('web.university.list')
 
 # Login URL. Used with login_required decorators when a user
 # must be logged in before accessing the view otherwise this URL

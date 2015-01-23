@@ -2,6 +2,7 @@
 -e .
 -e ../../app/base
 -e ../../app/login
+factory-boy
 gitpython
 hgapi
 ipdb
@@ -9,4 +10,6 @@ IPy
 pytest-django
 pytest-flakes
 pytest-pep8
+sphinx
+sphinx_rtd_theme
 walkdir
