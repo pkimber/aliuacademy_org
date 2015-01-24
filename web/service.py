@@ -35,64 +35,6 @@ def number_from_string(text):
         raise AcademyError("'{}' does not contain a number".format(text))
 
 
-def _update_course(university, department, order, course):
-    univ = University.objects.get(folder_name=university)
-    dept = Department.objects.get(university=univ, folder_name=department)
-    print('Course: {}'.format(course))
-    try:
-        Course.objects.get(
-            department=dept,
-            folder_name=course
-        )
-    except Course.DoesNotExist:
-        Course.objects.create_course(
-            department=dept,
-            order=order,
-            folder_name=course,
-        )
-
-
-def _update_topic(university, department, course, order, path, topic):
-    univ = University.objects.get(folder_name=university)
-    dept = Department.objects.get(university=univ, folder_name=department)
-    cour = Course.objects.get(department=dept, folder_name=course)
-    print('Topic: {}'.format(topic))
-    try:
-        Topic.objects.get(
-            course=cour,
-            video=path,
-        )
-    except Topic.DoesNotExist:
-        Topic.objects.create_topic(
-            course=cour,
-            order=order,
-            file_path=path,
-        )
-
-
-def _update_department(university, department):
-    uni = University.objects.get(folder_name=university)
-    print('Department: {}'.format(department))
-    try:
-        Department.objects.get(
-            university=uni,
-            folder_name=department
-        )
-    except Department.DoesNotExist:
-        Department.objects.create_department(
-            university=uni,
-            folder_name=department,
-        )
-
-
-def _update_university(university):
-    print('University: {}'.format(university))
-    try:
-        University.objects.get(folder_name=university)
-    except University.DoesNotExist:
-        University.objects.create_university(folder_name=university)
-
-
 class FtpReader(object):
 
     """
@@ -119,7 +61,10 @@ class FtpReader(object):
             path = os.path.join(folder, course)
             if os.path.isdir(path):
                 order = order + 1
-                _update_course(university, department, order, course)
+                print('Course: {}'.format(course))
+                Course.objects.update_course(
+                    university, department, order, course
+                )
                 self._read_topics(university, department, course)
 
     def _read_departments(self, university):
@@ -132,7 +77,8 @@ class FtpReader(object):
         for department in folders:
             path = os.path.join(folder, department)
             if os.path.isdir(path):
-                _update_department(university, department)
+                print('Department: {}'.format(department))
+                Department.objects.update_department(university, department)
                 self._read_courses(university, department)
 
     def _read_topics(self, university, department, course):
@@ -150,7 +96,8 @@ class FtpReader(object):
             path = os.path.join(folder, topic)
             if os.path.isfile(path):
                 order = order + 1
-                _update_topic(
+                print('Topic: {}'.format(topic))
+                Topic.objects.update_topic(
                     university,
                     department,
                     course,
@@ -174,7 +121,8 @@ class FtpReader(object):
         for university in folders:
             path = os.path.join(folder, university)
             if os.path.isdir(path):
-                _update_university(university)
+                print('University: {}'.format(university))
+                University.objects.update_university(university)
                 self._read_departments(university)
 
     def update(self):

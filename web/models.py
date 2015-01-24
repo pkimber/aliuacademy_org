@@ -27,6 +27,12 @@ class UniversityManager(models.Manager):
         university.save()
         return university
 
+    def update_university(self, university):
+        try:
+            self.model.objects.get(folder_name=university)
+        except University.DoesNotExist:
+            self.create_university(folder_name=university)
+
 
 class University(TimeStampedModel):
 
@@ -53,6 +59,19 @@ class DepartmentManager(models.Manager):
         )
         department.save()
         return department
+
+    def update_department(self, university, department):
+        uni = University.objects.get(folder_name=university)
+        try:
+            self.model.objects.get(
+                university=uni,
+                folder_name=department
+            )
+        except Department.DoesNotExist:
+            self.create_department(
+                university=uni,
+                folder_name=department,
+            )
 
 
 class Department(TimeStampedModel):
@@ -84,6 +103,21 @@ class CourseManager(models.Manager):
         )
         course.save()
         return course
+
+    def update_course(self, university, department, order, course):
+        univ = University.objects.get(folder_name=university)
+        dept = Department.objects.get(university=univ, folder_name=department)
+        try:
+            self.model.objects.get(
+                department=dept,
+                folder_name=course
+            )
+        except Course.DoesNotExist:
+            self.create_course(
+                department=dept,
+                order=order,
+                folder_name=course,
+            )
 
 
 class Course(TimeStampedModel):
@@ -118,6 +152,22 @@ class TopicManager(models.Manager):
         )
         topic.save()
         return topic
+
+    def update_topic(self, university, department, course, order, path, topic):
+        univ = University.objects.get(folder_name=university)
+        dept = Department.objects.get(university=univ, folder_name=department)
+        cour = Course.objects.get(department=dept, folder_name=course)
+        try:
+            self.model.objects.get(
+                course=cour,
+                video=path,
+            )
+        except Topic.DoesNotExist:
+            self.create_topic(
+                course=cour,
+                order=order,
+                file_path=path,
+            )
 
 
 class Topic(TimeStampedModel):
