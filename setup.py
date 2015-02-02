@@ -19,8 +19,8 @@ def get_readme():
 
 
 setup(
-    name='pkimber-aliuacademy-org',
-    packages=['project', 'project.management', 'project.management.commands', 'settings', 'web', 'web.tests', 'web.management', 'web.management.commands'],
+    name='kb-aliuacademy-org',
+    packages=['project', 'project.management', 'project.management.commands', 'web', 'web.tests', 'web.management', 'web.management.commands', 'settings'],
     package_data={
         'project': [
             'static/*.*',
@@ -37,11 +37,11 @@ setup(
             'templates/web/*.*',
         ],
     },
-    version='0.0.16',
+    version='0.0.17',
     description='Aliu Academy web site',
     author='Patrick Kimber',
     author_email='code@pkimber.net',
-    url='ssh://git@bitbucket.org/pkimber/aliuacademy_org.git',
+    url='git@bitbucket.org:pkimber/aliuacademy_org.git',
     classifiers=[
         'Development Status :: 1 - Planning',
         'Environment :: Console',
@@ -50,6 +50,7 @@ setup(
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
         'Topic :: Office/Business :: Scheduling',
     ],
     long_description=get_readme(),

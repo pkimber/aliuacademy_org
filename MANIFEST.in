@@ -1,11 +1,10 @@
+recursive-include docs *
 recursive-include project/static *
 recursive-include project/templates *
-recursive-include aliu/templates *
+recursive-include web/templates *
 
 include LICENSE
 include manage.py
 include README
 include requirements/*.txt
 include *.txt
-
-prune example/
