@@ -28,8 +28,8 @@ DATABASES = {
 }
 
 # FTP upload 'static' folder
-FTP_STATIC_DIR = get_env_variable('FTP_STATIC_DIR')
-FTP_STATIC_URL = get_env_variable('FTP_STATIC_URL')
+FTP_STATIC_DIR = None
+FTP_STATIC_URL = None
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
