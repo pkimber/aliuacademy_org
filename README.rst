@@ -12,11 +12,14 @@ Virtual Environment
 
 ::
 
+  touch .private
   pyvenv-3.4 --without-pip venv-aliuacademy_org
   source venv-aliuacademy_org/bin/activate
   wget https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py
   python get-pip.py
 
+  deactivate
+  source venv-aliuacademy_org/bin/activate
   pip install -r requirements/local.txt
 
 Testing
