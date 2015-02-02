@@ -19,10 +19,8 @@ Any universities associated with your account are shown in the right hand naviga
 
 
 {% block sidemenuitems %}
-
     <li class="pure-menu-heading">Select University</li>
     {% for university in university_list %}
     <li><a href="{% url 'web.university.department.list' university.slug %}">{{ university.name }}</a></li>
     {% endfor %}  
-    
 {% endblock sidemenuitems %}

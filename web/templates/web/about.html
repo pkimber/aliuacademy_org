@@ -1,35 +1,33 @@
 {% extends 'web/base.html' %}
+{% load staticfiles %}
 
-{% block heading_extra %}
-  <div class="splash">
-    <div class="pure-g">
-    <div class="pure-u-1">
-      <div class="c-box">
-        <h1 class="splash-head">
-          Aliu Academy
-        </h1>
-        Bringing World class educational resources to you
-      </div>
+
+{% block content %}
+<div class="ribbon l-box-lrg pure-g">
+
+    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
+        <img src="{% static 'img/project/' %}nelson-mandela.png" align="left" style="margin: 10px ;"/> 
     </div>
-    </div>
-  </div>
-  <div class="pure-g">
-  <div class="pure-u-1">
-    <div class="l-box note">
-      Education is the great engine of personal development. It is
+    
+    <div class="pure-u-1 pure-u-md-3-2 pure-u-lg-3-5">
+
+       <p style="font-size: 110% ;padding:50px;">
+      "Education is the great engine of personal development. It is
       through education that the daughter of a persant can become a
       doctor, that a son of a mineworker can become the head of the
       mine, that a child of farm workers can become the president of
       a great nation. It is what we make out of what we have, not
-      what we are given, that separates one person from another.
-      (Nelson Mandela)
-    </div>
-  </div>
-  </div>
-{% endblock heading_extra %}
+      what we are given, that separates one person from another."<br/>
+       <h2 class="content-head content-head-ribbon">Nelson Mandela</h2>  
 
-{% block content %}
-  <p>
+    </div>
+    
+</div>
+
+ <h1 class="content-head">
+  Aliu Academy
+</h1>
+<p>
     ALIU ACADEMY is an initiative that aims to use technology to
     bring rich and world class educational opensource contents
     from some of the best institutions in the world to
@@ -37,12 +35,14 @@
     access the resources in an offline environment at speeds
     comparable to high speed broadband in other parts of the
     world with high speed internet.
-  </p>
-  <p>
+</p>
+<p>
     Fast internet technologies have not reached most parts of
-    the world and Africa is not an exception, in fact 65% of the
-    world have no access to high speed internet connection. But
-    the world does not wait. Technology keeps pushing beyond to
+    the world and Africa is not an exception, in fact   <b> 65% of the
+    world have no access to high speed internet connection </b>.
+</p>
+
+<p>But the world does not wait. Technology keeps pushing beyond to
     the limit and there is an exponential spread of knowledge in
     what has grown to be known as massive online open courses
     (MOOC) where some of the best schools in the world such as
@@ -51,18 +51,30 @@
     free mostly real life lecture videos. But to watch these
     videos and make any sense of them requires high speed
     internet which for now is not totally practicable across
-    Africa. What should we do? We can't fold our hands and wait
-    till high speed broadband comes before we tap into these
-    technologies and join the world in advancement of knowledge!
-    Hence the motivation to build a platform that will locally
-    distribute the contents of these resources such that
-    University communities can have access to these resources at
-    super fast speed through a wifi based local area network.
-    Students can access materials on the server from their
-    mobile devices like android, iphone,ipad and laptops as well
-    as desktops at a speed that will make them feel they are
-    truly in the 21st century. We hope to expand and collaborate
-    more with stakeholders to spread knowledge for free and
-    light up the continent for present and future generations.
-  </p>
+    Africa. 
+</p>
+
+<h3>
+    What should we do?
+</h3>
+    
+<p> 
+We can't fold our hands and wait
+till high speed broadband comes before we tap into these
+technologies and join the world in advancement of knowledge!
+Hence the motivation to build a platform that will locally
+distribute the contents of these resources such that
+University communities can have access to these resources at
+super fast speed through a WIFI based local area network.
+Students can access materials on the server from their
+mobile devices like Android, iPhone,iPad and laptops as well
+as desktops at a speed that will make them feel they are
+truly in the 21st century. 
+ </p>
+ 
+<p> <b>We hope to expand and collaborate
+more with stakeholders to spread knowledge for free and
+light up the continent for present and future generations.</b>
+</p>
+
 {% endblock content %}

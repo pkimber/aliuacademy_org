@@ -9,7 +9,7 @@
 {% endblock sub_heading %}
 
 {% block content %}
-<h1 class="content-head">{{ course.name }} Topics</h1>
+<h1 class="content-head">{{ course.department.name }} Topics</h1>
 <p>
 Click to select a topic.
 </p>
