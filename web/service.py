@@ -35,22 +35,16 @@ def number_from_string(text):
         raise AcademyError("'{}' does not contain a number".format(text))
 
 
-class FtpReader(object):
+class VideoReader(object):
+    """Walk the file system to find videos and put into the course."""
 
-    """
-    Aliu will upload videos via FTP.
-
-    Read the folder structure and update the database to reflect it.
-
-    """
-
-    def __init__(self, ftp_folder):
-        """Initialise with 'settings.FTP_STATIC_DIR'."""
-        self.ftp_folder = ftp_folder
+    def __init__(self, folder):
+        """Initialise with 'settings.MEDIA_ROOT'."""
+        self.folder = folder
 
     def _read_courses(self, university, department):
         folder = os.path.join(
-            self.ftp_folder,
+            self.folder,
             'academy',
             university,
             department,
@@ -69,7 +63,7 @@ class FtpReader(object):
 
     def _read_departments(self, university):
         folder = os.path.join(
-            self.ftp_folder,
+            self.folder,
             'academy',
             university,
         )
@@ -83,7 +77,7 @@ class FtpReader(object):
 
     def _read_topics(self, university, department, course):
         folder = os.path.join(
-            self.ftp_folder,
+            self.folder,
             'academy',
             university,
             department,
@@ -114,7 +108,7 @@ class FtpReader(object):
 
     def _read_universities(self):
         folder = os.path.join(
-            self.ftp_folder,
+            self.folder,
             'academy'
         )
         folders = os.listdir(folder)

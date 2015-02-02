@@ -129,7 +129,7 @@ ROOT_URLCONF = 'project.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'project.wsgi.application'
 
-INSTALLED_APPS = (
+DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -140,12 +140,20 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     # 'django_extensions',
+)
+
+THIRD_PARTY_APPS = (
     'reversion',
+)
+
+LOCAL_APPS = (
     'project',
     'base',
     'login',
     'web',
 )
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # URL where requests are redirected after login when the contrib.auth.login
 # view gets no next parameter.
@@ -155,6 +163,10 @@ LOGIN_REDIRECT_URL = reverse_lazy('web.university.list')
 # must be logged in before accessing the view otherwise this URL
 # will be called.
 # LOGIN_URL = reverse_lazy('login.login')
+
+# FTP upload 'static' folder
+FTP_STATIC_DIR = None
+FTP_STATIC_URL = None
 
 LOGGING = {
     'version': 1,

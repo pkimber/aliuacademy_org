@@ -7,25 +7,25 @@ import os
 
 from web.service import (
     AcademyError,
-    FtpReader,
+    VideoReader,
     number_from_string,
 )
 
 
-class TestServiceFtpReader(TestCase):
+class TestServiceVideoReader(TestCase):
 
     def setUp(self):
         self.folder = os.path.join(
             os.path.dirname(os.path.realpath(__file__)),
             'data',
-            'ftp_static_dir',
+            'media_root',
         )
 
     def test_init(self):
-        FtpReader(self.folder)
+        VideoReader(self.folder)
 
     def test_read(self):
-        FtpReader(self.folder).update()
+        VideoReader(self.folder).update()
 
     def test_number_from_string(self):
         result = number_from_string('abc123')

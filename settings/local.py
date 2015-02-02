@@ -14,20 +14,15 @@ CSRF_COOKIE_SECURE = False
 
 TEMPLATE_STRING_IF_INVALID = '**** INVALID EXPRESSION: %s ****'
 
-# FTP upload 'static' folder
-FTP_STATIC_DIR = os.path.normpath(os.path.join(
+# https://docs.djangoproject.com/en/1.5/howto/static-files/#serving-files-uploaded-by-a-user
+MEDIA_ROOT = os.path.normpath(os.path.join(
     os.path.dirname(os.path.realpath(__file__)),
     '..',
     'web',
     'tests',
     'data',
-    'ftp_static_dir',
+    'media_root',
 ))
-# Start a local web server in the 'aliu' folder.
-FTP_STATIC_URL = 'http://localhost:8080/'
-
-# https://docs.djangoproject.com/en/1.5/howto/static-files/#serving-files-uploaded-by-a-user
-MEDIA_ROOT = 'media'
 
 # The production site has custom templates and static media uploaded using
 # FTP.  We have some example templates for testing purposes.
