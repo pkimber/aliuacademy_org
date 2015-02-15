@@ -1,15 +1,14 @@
 {% extends 'web/base.html' %}
 
 {% block sidemenu %}
-    <div class="pure-u-1 pure-u-md-2-5">
-        <div id="menu" style="margin-top:20px;">
-        <div class="pure-menu pure-menu-open">
-        <ul>
-        <li><a href="{% url 'web.university.list' %}" >My Universities</a></li>
-        {% block sidemenuitems %}
-        {% endblock sidemenuitems %}   
-        </ul> 
+    <div class="pure-menu custom-restricted-width">    
+    <div style="margin-top:20px;">    
+        <div class="pure-menu pure-menu-open" >
+            <ul class="pure-menu-list">
+            {% block sidemenuitems %}
+            {% endblock sidemenuitems %}   
+            </ul> 
         </div> 
-        </div> 
+    </div>
     </div>
 {% endblock sidemenu %}   

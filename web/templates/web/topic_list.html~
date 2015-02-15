@@ -1,4 +1,5 @@
 {% extends 'web/base_sidebar.html' %}
+{% load staticfiles %}
 
 {% block sub_title %}
   Topics
@@ -9,7 +10,7 @@
 {% endblock sub_heading %}
 
 {% block content %}
-<h1 class="content-head">{{ course.department.name }} Topics</h1>
+<h1 class="content-head">{{ course.name }} Topics</h1>
 <p>
 Click to select a topic.
 </p>
@@ -17,14 +18,16 @@ Click to select a topic.
 
 
 {% block sidemenuitems %}
-
-    <li><a href="{% url 'web.university.department.list' course.department.university.slug %}">&nbsp;&nbsp;{{ course.department.university.name }} University</a></li>
-    <li><a href="{% url 'web.department.course.list' course.department.pk %}">&nbsp;&nbsp;&nbsp;&nbsp;{{ course.department.name }}</a><li>
-    <li class="pure-menu-selected"><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ course.name }}</a><li>
-    <li class="pure-menu-heading">Select a Topic</li>
+    <li class="pure-menu-item"><a href="{% url 'web.university.list' %}" class="pure-menu-link"><img src="{% static 'img/project/' %}arrow-back-left.png" /> My Universities</a></li>
+    <li class="pure-menu-item"><a href="{% url 'web.university.department.list' course.department.university.slug %}" class="pure-menu-link"><img src="{% static 'img/project/' %}arrow-back-left.png" /> {{ course.department.university.name }} University</a></li>
+    <li class="pure-menu-item"><a href="{% url 'web.department.course.list' course.department.pk %}" class="pure-menu-link"><img src="{% static 'img/project/' %}arrow-back-left.png" />{{ course.department.name }} Department</a></li>
+        
+    <li class="pure-menu-heading">{{ course.name }}<li>
+    
+     <li><span class="pure-menu-link pure-menu-instruction">Select a Topic</span></li>
 
     {% for topic in topic_list %}
-    <li><a href="{% url 'web.topic.detail' topic.pk %}">{{ topic.name }}</a></li>
+    <li class="pure-menu-item"><a href="{% url 'web.topic.detail' topic.pk %}" class="pure-menu-link">{{ topic.name }}</a></li>
     {% endfor %}
 
 {% endblock sidemenuitems %}

@@ -112,7 +112,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = get_env_variable("SECRET_KEY")
+SECRET_KEY = 'timsecretkey' #get_env_variable("SECRET_KEY")
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

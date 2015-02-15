@@ -1,4 +1,5 @@
 {% extends 'web/base_sidebar.html' %}
+{% load staticfiles %}
 
 {% block sub_title %}
   Course
@@ -18,13 +19,12 @@ Click to select a course.
 
 
 {% block sidemenuitems %}
-
-    <li><a href="{% url 'web.university.department.list' department.university.slug %}">&nbsp;&nbsp;{{ department.university.name }} University</a></li>
-    <li class="pure-menu-selected"><a>&nbsp;&nbsp;&nbsp;&nbsp;{{ department.name }} Department</a></li>
-    <li class="pure-menu-heading">Select a Course</li>
-
+    <li class="pure-menu-item"><a href="{% url 'web.university.list' %}" class="pure-menu-link">My Universities <img src="{% static 'img/project/' %}arrow-back-left.png" /></a></li>
+    <li class="pure-menu-item"><a href="{% url 'web.university.department.list' department.university.slug %}" class="pure-menu-link">{{ department.university.name }} University <img src="{% static 'img/project/' %}arrow-back-left.png" /></a></li>
+    <li class="pure-menu-heading">{{ department.name }} Department</li>
+    <li><span class="pure-menu-link pure-menu-instruction">Select a Course</span></li>
     {% for course in course_list %} 
-    <li><a href="{% url 'web.course.topic.list' course.pk %}">{{ course.name }}</a></li>
+    <li class="pure-menu-item"><a href="{% url 'web.course.topic.list' course.pk %}" class="pure-menu-link">{{ course.name }}</a></li>
     {% endfor %}
     
 {% endblock sidemenuitems %}
