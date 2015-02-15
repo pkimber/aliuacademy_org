@@ -1,30 +1,8 @@
 {% extends 'web/base.html' %}
 {% load staticfiles %}
 
-
 {% block content %}
-<div class="ribbon l-box-lrg pure-g">
-
-    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
-        <img src="{% static 'img/project/' %}nelson-mandela.png" align="left" style="margin: 10px ;"/> 
-    </div>
-    
-    <div class="pure-u-1 pure-u-md-3-2 pure-u-lg-3-5">
-
-       <p style="font-size: 110% ;padding:50px;">
-      "Education is the great engine of personal development. It is
-      through education that the daughter of a persant can become a
-      doctor, that a son of a mineworker can become the head of the
-      mine, that a child of farm workers can become the president of
-      a great nation. It is what we make out of what we have, not
-      what we are given, that separates one person from another."<br/>
-       <h2 class="content-head content-head-ribbon">Nelson Mandela</h2>  
-
-    </div>
-    
-</div>
-
- <h1 class="content-head">
+<h1 class="content-head">
   Aliu Academy
 </h1>
 <p>
@@ -41,7 +19,6 @@
     the world and Africa is not an exception, in fact   <b> 65% of the
     world have no access to high speed internet connection </b>.
 </p>
-
 <p>But the world does not wait. Technology keeps pushing beyond to
     the limit and there is an exponential spread of knowledge in
     what has grown to be known as massive online open courses
@@ -53,11 +30,9 @@
     internet which for now is not totally practicable across
     Africa. 
 </p>
-
 <h3>
     What should we do?
 </h3>
-    
 <p> 
 We can't fold our hands and wait
 till high speed broadband comes before we tap into these
@@ -70,11 +45,23 @@ Students can access materials on the server from their
 mobile devices like Android, iPhone,iPad and laptops as well
 as desktops at a speed that will make them feel they are
 truly in the 21st century. 
- </p>
- 
-<p> <b>We hope to expand and collaborate
-more with stakeholders to spread knowledge for free and
+</p>
+<p>
+<b>We hope to expand and collaborate more with stakeholders to spread knowledge for free and
 light up the continent for present and future generations.</b>
 </p>
 
 {% endblock content %}
+
+
+{% block sidemenu %}
+<div style="padding:20px;font-size: 110%;color:#34495e;background-image:url({% static 'img/project/' %}nelson-mandela.png);  background-position: center; background-size: 100% ;background-repeat: no-repeat;">
+    <p>
+    <strong>
+    "Education is the great engine of personal development. It is through education that the daughter of a persant can become a  doctor, that a son of a mineworker can become the head of the
+      mine, that a child of farm workers can become the president of a great nation. It is what we make out of what we have, not what we are given, that separates one person from another." 
+    </strong>   
+    </p>
+    <h2>Nelson Mandela</h2>  
+</div>
+{% endblock sidemenu %}

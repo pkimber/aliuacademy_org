@@ -1,5 +1,5 @@
 {% extends 'web/base_sidebar.html' %}
-
+{% load staticfiles %}
 {% block sub_title %}
   Universities
 {% endblock sub_title %}
@@ -7,7 +7,6 @@
 {% block sub_heading %}
   Universities
 {% endblock sub_heading %}
-
 
 
 {% block content %}
@@ -18,11 +17,12 @@ Any universities associated with your account are shown in the right hand naviga
 {% endblock content %}
 
 
-{% block sidemenuitems %}
-
-    <li class="pure-menu-heading">Select University</li>
+{% block sidemenuitems %}    
+    <li class="pure-menu-heading">My Universities</li>
+    <li><span class="pure-menu-link pure-menu-instruction">Select University</span></li>
     {% for university in university_list %}
-    <li><a href="{% url 'web.university.department.list' university.slug %}">{{ university.name }}</a></li>
+    <li class="pure-menu-item"><a href="{% url 'web.university.department.list' university.slug %}" class="pure-menu-link">{{ university.name }}</a></li>
     {% endfor %}  
     
 {% endblock sidemenuitems %}
+

@@ -12,6 +12,7 @@ body {
     line-height: 1.7em;
     color: #7f8c8d;
     font-size: 13px;
+    margin: 0em;
 }
 
 h1,
@@ -45,8 +46,6 @@ label {
 .is-center {
     text-align: center;
 }
-
-
 
 /*
  * -- PURE FORM STYLES --
@@ -84,82 +83,10 @@ a.pure-button-primary {
     font-size: 120%;
 }
 
-
 /*
  * -- MENU STYLES --
  * I want to customize how my .pure-menu looks at the top of the page
  */
-
-.home-menu {
-    padding: 0.5em;
-    text-align: center;
-    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
-}
-.home-menu.pure-menu-open {
-    background: #052f02;
-}
-.pure-menu.pure-menu-open.pure-menu-fixed {
-    /* Fixed menus normally have a border at the bottom. */
-    border-bottom: 1px solid #72a710;
-    /* I need a higher z-index here because of the scroll-over effect. */
-    z-index: 4;
-}
-
-.home-menu .pure-menu-heading {
-    color: white;
-    font-weight: 400;
-    font-size: 120%;
-}
-
-.home-menu .pure-menu-selected a {
-    color: #86c40f;
-}
-.home-menu a {
-    color: #72a710;
-}
-.home-menu li a:hover,
-.home-menu li a:focus {
-    background: none;
-    border: none;
-    color: #86c40f;
-}
-
-
-/*
- * -- SPLASH STYLES --
- * This is the blue top section that appears on the page.
- */
-
-.splash-container {
-    background: #72a710;
-    z-index: 1;
-    overflow: hidden;
-    /* The following styles are required for the "scroll-over" effect */
-    width: 100%;
-    height: 34%;
-    top: 0;
-    left: 0;
-
-}
-
-.splash {
-    margin: 1em auto 0;
-    padding: 1em 0.5em;
-    background: #eee;
-}
-    .splash .splash-head {
-        font-size: 400%;
-        margin: 0em 0;
-        line-height: 1.2em;
-    }
-    .splash .splash-subhead {
-        color: #999;
-        font-weight: 300;
-        line-height: 1.4em;
-    }
-    .splash .primary-button {
-        font-size: 150%;
-    }
 
 
 /*
@@ -168,13 +95,8 @@ a.pure-button-primary {
  */
 .content-wrapper {
     /* These styles are required for the "scroll-over" effect */
-    position: absolute;
     width: 100%;
-    top: 80px;
-    z-index: 2;
-    background: white;
 }
-
 
 .content {
     padding: 1em;
@@ -211,9 +133,9 @@ a.pure-button-primary {
 
 /* This is the class used for the footer */
 .footer {
-    margin-top: 80px;
+    margin-top: 50px;
     background: #AAAAAA;
-    min-height: 400px;
+    min-height: 100px;
 }
 
 .footer a {
@@ -224,6 +146,102 @@ a.pure-button-primary {
     background: none;
     border: none;
     color: #FFFFFF;
+}
+
+
+
+.custom-wrapper {
+    background-color: #052f02;
+    margin-bottom: 1em;
+    -webkit-font-smoothing: antialiased;
+    height: 2.9em;
+    min-height: 2.9em;
+    overflow: hidden;
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -ms-transition: height 0.5s;
+    transition: height 0.5s;
+}
+
+.custom-wrapper.open {
+    height: 22em;
+}
+
+.custom-menu-3 {
+    text-align: right;
+}
+
+.custom-toggle {
+    width: 34px;
+    height: 34px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.custom-toggle .bar {
+    background-color: #777;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 18px;
+    right: 7px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.custom-toggle .bar:first-child {
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+}
+
+.custom-toggle.x .bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.custom-toggle.x .bar:first-child {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.pure-menu a { color: #76aa16;}
+.pure-menu a:hover { color: #96ca36; background: none;}
+.pure-menu-instruction {color: #818181;font-weight:bold; }
+.custom-side-menu {
+    border: 1px solid #818181;
+    padding: 5px;
+    margin: 20px;
+}
+.pure-menu-link, .pure-menu-heading {overflow: hidden;}
+.pure-menu-heading {background-color: #052f02; color: #ffffff;}
+
+#menu .pure-menu-selected >a{
+    color: #b6ff56;
+}
+
+@media (max-width: 47.999em) {
+
+    .custom-menu-3 {
+        text-align: left;    height: 2.9em;
+    }
+
+    .custom-toggle {
+        display: block;
+    }
+
 }
 
 /*
@@ -275,16 +293,4 @@ a.pure-button-primary {
         border: none;
     }
 
-}
-
-/*
- * -- DESKTOP (AND UP) MEDIA QUERIES --
- * On desktops and other large devices, we want to over-ride some
- * of the mobile and tablet styles.
- */
-@media (min-width: 78em) {
-    /* We increase the header font size even more */
-    .splash-head {
-        font-size: 300%;
-    }
 }
