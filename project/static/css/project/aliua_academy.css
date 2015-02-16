@@ -109,6 +109,7 @@ a.pure-button-primary {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    line-height: 1.1em;
     margin: 10px 0px 20px 0px;
 }
 
@@ -226,7 +227,7 @@ a.pure-button-primary {
     margin: 20px;
 }
 .pure-menu-link, .pure-menu-heading {overflow: hidden;}
-.pure-menu-heading {background-color: #052f02; color: #ffffff;}
+.pure-menu-heading {background-color: #052f02; color: #ffffff; text-transform: none; }
 
 #menu .pure-menu-selected >a{
     color: #b6ff56;
