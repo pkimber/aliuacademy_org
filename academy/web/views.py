@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.shortcuts import get_object_or_404
 from django.views.generic import (
     DetailView,

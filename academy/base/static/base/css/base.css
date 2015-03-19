@@ -1,0 +1,107 @@
+/*
+ * From http://purecss.io/grids/#using-grids-with-custom-fonts
+ * When setting the primary font stack, apply it to the Pure grid units along
+ * with `html`, `button`, `input`, `select`, and `textarea`. Pure Grids use
+ * specific font stacks to ensure the greatest OS/browser compatibility.
+ */
+
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    /* Set your content font stack here: */
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    color: #777;
+    margin: 2em 0 1em;
+}
+
+a {
+    color: #3b8bba; /* block-background-text-normal */
+    text-decoration: none;
+}
+
+a:visited {
+    color: #265778; /* block-normal-text-normal */
+}
+
+.header {
+    text-align: center;
+    padding: 0;
+}
+    .header h1 {
+        color: #1f8dd6;
+        margin: 0;
+        padding: 0;
+    }
+    .header h2 {
+        color: #666;
+        margin: 0.5em 0 0.8em;
+    }
+
+/*
+ * Footer Module Styles
+ */
+.legal {
+    font-size: 80%;
+    border-top: 1px solid #eee;
+    padding: 0.5em 0;
+    background: rgb(250, 250, 250);
+}
+
+    .legal-license,
+    .legal-copyright {
+        margin: 0;
+    }
+
+    .legal-copyright,
+    .legal-links {
+        text-align: right;
+    }
+
+    .legal-links {
+        list-style: none;
+        margin: 0;
+    }
+
+    .legal-logo {
+        text-align: center;
+    }
+
+/*
+ * Apply the .box class on the immediate parent of any grid element (pure-u-*)
+ * to apply some padding.
+ */
+.l-box {
+    padding: 1.3em;
+}
+
+.r-box {
+    padding-right: 0.5em;
+}
+
+.marketing-ribbon {
+    border-bottom: 1px solid #eee;
+    padding: 1em 0;
+}
+
+    .marketing-ribbon h3 {
+        font-size: 1.47em;
+        font-weight: normal;
+    }
+
+.message {
+    text-align: center;
+    padding: 0;
+    background: rgb(224, 255, 184);
+}
+
+.testing {
+    text-align: center;
+    padding: 0;
+    background: rgb(255, 255, 102);
+}
+
+form input, label, select, textarea {
+    font-size: small;
+}
