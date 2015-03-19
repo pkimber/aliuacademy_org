@@ -8,7 +8,7 @@ import re
 import shutil
 import sys
 import tempfile
-from annoying.functions import get_object_or_None
+#from annoying.functions import get_object_or_None
 from optparse import make_option
 
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -18,16 +18,17 @@ BASE_DIR = os.path.realpath(CURRENT_DIR + "/../../../")
 if not os.environ.get("DJANGO_SETTINGS_MODULE"):
     sys.path = [
         os.path.join(BASE_DIR, "python-packages"),
-        os.path.join(BASE_DIR, "kalite")
+        os.path.join(BASE_DIR, "academy")
     ] + sys.path
-    os.environ["DJANGO_SETTINGS_MODULE"] = "kalite.settings"  # allows django commands to run
+    os.environ["DJANGO_SETTINGS_MODULE"] = "academy.settings"  # allows django commands to run
 
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.management import call_command
 from django.core.management.base import BaseCommand, CommandError
+from django.shortcuts import _get_queryset
 
-import kalite
+import academy
 from fle_utils.config.models import Settings
 from fle_utils.general import get_host_name
 from fle_utils.internet import get_ip_addresses
@@ -37,6 +38,24 @@ from fle_utils.platforms import is_windows, system_script_extension
 # from kalite.facility.models import Facility
 # from securesync.management.commands.initdevice import load_data_for_offline_install, confirm_or_generate_zone, Command as InitCommand
 # from securesync.models import Zone, Device
+
+
+# PJK 19/03/2015 Copied from 'python-packages/annoying/functions.py'
+def get_object_or_None(klass, *args, **kwargs):
+    """
+    Uses get() to return an object or None if the object does not exist.
+
+    klass may be a Model, Manager, or QuerySet object. All other passed
+    arguments and keyword arguments are used in the get() query.
+
+    Note: Like with get(), a MultipleObjectsReturned will be raised if more than one
+    object is found.
+    """
+    queryset = _get_queryset(klass)
+    try:
+        return queryset.get(*args, **kwargs)
+    except queryset.model.DoesNotExist:
+        return None
 
 
 def raw_input_yn(prompt):
@@ -196,7 +215,7 @@ class Command(BaseCommand):
         if not os.access(BASE_DIR, os.W_OK):
             raise CommandError("You do not have permission to write to this directory!")
 
-        install_clean = not kalite.is_installed()
+        install_clean = not academy.is_installed()
         database_kind = settings.DATABASES["default"]["ENGINE"]
         database_file = ("sqlite" in database_kind and settings.DATABASES["default"]["NAME"]) or None
 
@@ -219,7 +238,7 @@ class Command(BaseCommand):
                 sys.stdout.write("OK.  We will run a clean install; \n")
                 sys.stdout.write("the database file will be moved to a deletable location.\n")  # After all, don't delete--just move.
 
-        if not install_clean and not database_file and not kalite.is_installed():
+        if not install_clean and not database_file and not academy.is_installed():
             # Make sure that, for non-sqlite installs, the database exists.
             raise Exception("For databases not using SQLite, you must set up your database before running setup.")
 

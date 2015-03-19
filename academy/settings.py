@@ -49,7 +49,7 @@ CENTRAL_SERVER = False  # Hopefully will be removed soon.
 
 # Set logging level based on the value of DEBUG (evaluates to 0 if False, 1 if True)
 LOGGING_LEVEL = getattr(local_settings, "LOGGING_LEVEL", logging.DEBUG if DEBUG else logging.INFO)
-LOG = getattr(local_settings, "LOG", logging.getLogger("kalite"))
+LOG = getattr(local_settings, "LOG", logging.getLogger("academy"))
 TEMPLATE_DEBUG = getattr(local_settings, "TEMPLATE_DEBUG", DEBUG)
 
 logging.basicConfig()
@@ -165,17 +165,18 @@ LOCAL_APPS = (
 KA_LITE_APPS = (
     'django_extensions', # needed for clean_pyc (testing)
     'fle_utils.config',  # default_language
-    'kalite.distributed',
+    'distributed',
 )
 
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + KA_LITE_APPS
 
+
 # PJK 11/03/2015
 # if not BUILT:
 #     INSTALLED_APPS += (
 #         "fle_utils.testing",
-#         "kalite.testing",
+#         "academy.testing",
 #     ) + getattr(local_settings, 'INSTALLED_APPS', tuple())
 
 MIDDLEWARE_CLASSES = (
@@ -187,7 +188,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 ) + getattr(local_settings, 'TEMPLATE_CONTEXT_PROCESSORS', tuple())
 
 TEMPLATE_DIRS  = tuple()  # will be filled recursively via INSTALLED_APPS
-STATICFILES_DIRS = (os.path.join(PROJECT_PATH, '..', 'static-libraries'),)  # libraries common to all apps
+# PJK 19/03/2015
+# STATICFILES_DIRS = (os.path.join(PROJECT_PATH, '..', 'static-libraries'),)  # libraries common to all apps
 
 DEFAULT_ENCODING = 'utf-8'
 
