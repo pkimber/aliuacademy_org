@@ -7,7 +7,7 @@ import socket
 import sys
 import time
 from socket import gethostname
-from urllib import urlopen
+from urllib.request import urlopen
 
 import django.contrib.admin
 from django.conf import settings
@@ -114,7 +114,7 @@ def poll_process(pid):
         try:
             # poll the process state
             os.kill(pid, 0)
-        except OSError, e:
+        except OSError as e:
             if e[0] == errno.ESRCH:
                 # process has died
                 return False
@@ -157,7 +157,7 @@ def stop_server_using_pid(pid):
         os.kill(pid, signal.SIGKILL)
         #if still_alive(pid):
         if poll_process(pid):
-            raise OSError, "Process %s did not stop."
+            raise OSError("Process %s did not stop.")
 
 
 def port_is_available(host, port):
@@ -216,7 +216,7 @@ def runcherrypyserver(argset=[], **kwargs):
         options[k.lower()] = v
 
     if "help" in options:
-        print CPWSGI_HELP
+        print(CPWSGI_HELP)
         return
 
     if "stop" in options:

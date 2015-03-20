@@ -7,9 +7,9 @@ fi
 
 SCRIPT_DIR=`dirname "${BASH_SOURCE[0]}"`
 if [ -e "$SCRIPT_DIR/python.sh" ]; then
-    KALITE_DIR=$SCRIPT_DIR/../kalite
+    KALITE_DIR=$SCRIPT_DIR/../academy
 else
-    KALITE_DIR=$SCRIPT_DIR/kalite
+    KALITE_DIR=$SCRIPT_DIR/academy
     SCRIPT_DIR=$SCRIPT_DIR/scripts
 fi
 
@@ -19,5 +19,6 @@ mv "$KALITE_DIR/static/videos/*" "$KALITE_DIR/../content" > /dev/null 2> /dev/nu
 echo
 source "$SCRIPT_DIR/serverstart.sh"
 
-echo
-source "$SCRIPT_DIR/cronstart.sh"
+# PJK 20/03/2015
+# echo
+# source "$SCRIPT_DIR/cronstart.sh"

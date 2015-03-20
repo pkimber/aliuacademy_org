@@ -6,4 +6,5 @@ if [ ! -e "$SCRIPT_DIR/serverstop.sh" ]; then
 fi
 
 source "$SCRIPT_DIR/serverstop.sh"
-source "$SCRIPT_DIR/cronstop.sh"
+# PJK 20/03/2015
+# source "$SCRIPT_DIR/cronstop.sh"

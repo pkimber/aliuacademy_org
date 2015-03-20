@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import imp
 import os, sys, time, signal, errno
-import urlparse
+# import urlparse
+from urllib import parse
 
 import cherrypy
 from cherrypy.process import plugins
@@ -60,7 +61,7 @@ class DjangoAppPlugin(plugins.SimplePlugin):
             dir='admin',
             root=admin_static_dir
         )
-        cherrypy.tree.mount(admin_static_handler, urlparse.urljoin(settings.STATIC_URL, 'admin'))
+        cherrypy.tree.mount(admin_static_handler, parse.urljoin(settings.STATIC_URL, 'admin'))
 
     def load_settings(self):
         """ Loads the Django application's settings. You can
@@ -87,12 +88,14 @@ def poll_process(pid):
         try:
             # poll the process state
             os.kill(pid, 0)
-        except OSError, e:
-            if e[0] == errno.ESRCH:
+        except OSError as e:
+            if e.errno == errno.ESRCH:
+                #if e[0] == errno.ESRCH:
                 # process has died
                 return False
             else:
-                raise Exception
+                #    raise Exception
+                raise
     return True
 
 def stop_server(pidfile):
@@ -112,7 +115,7 @@ def stop_server(pidfile):
             os.kill(pid, signal.SIGKILL)
             #if still_alive(pid):
             if poll_process(pid):
-                raise OSError, "Process %s did not stop."
+                raise OSError("Process %s did not stop.")
         os.remove(pidfile)
 
 
