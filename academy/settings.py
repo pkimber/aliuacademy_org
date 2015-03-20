@@ -182,7 +182,8 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + KA_LITE_APPS
 
 MIDDLEWARE_CLASSES = (
     "django.contrib.messages.middleware.MessageMiddleware",  # needed for django admin
-    "django_snippets.session_timeout_middleware.SessionIdleTimeout",
+    # PJK 20/03/2015
+    # "django_snippets.session_timeout_middleware.SessionIdleTimeout",
 ) + getattr(local_settings, 'MIDDLEWARE_CLASSES', tuple())
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",  # needed for django admin

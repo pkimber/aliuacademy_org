@@ -11,3 +11,6 @@ PRODUCTION_PORT = 8085
 KALITE_TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 # PJK 20/03/2015
 CHERRYPY_THREAD_COUNT = 20
+
+# PJK 20/03/2015
+# WSGI_APPLICATION = 'project.wsgi.application'
