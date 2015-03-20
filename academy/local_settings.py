@@ -14,3 +14,6 @@ CHERRYPY_THREAD_COUNT = 20
 
 # PJK 20/03/2015
 # WSGI_APPLICATION = 'project.wsgi.application'
+
+# PJK 20/03/2015 - For the actual 'aliuacademy_org' Django application
+TESTING = False

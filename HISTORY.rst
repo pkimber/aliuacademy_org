@@ -128,3 +128,16 @@ git push::
 To run management commands (on linux)::
 
   python3 academy/manage.py shell
+
+20/03/2015
+----------
+
+Struggling because I couldn't see what CherryPy was doing.  To solve the
+problem:
+
+  # scripts/serverstart.sh
+  # set daemonize=false
+  "$pyexec" "$KALITE_DIR/manage.py" kaserve host=0.0.0.0 daemonize=false production=true pidfile="$KALITE_DIR/runcherrypyserver.pid"
+
+  # python-packages/cherrypy/__init__.py
+  log.error_file = 'logger.log'
