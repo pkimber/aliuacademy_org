@@ -166,6 +166,7 @@ KA_LITE_APPS = (
     'django_extensions', # needed for clean_pyc (testing)
     'fle_utils.config',  # default_language
     'distributed',
+    'django_cherrypy_wsgiserver',
 )
 
 

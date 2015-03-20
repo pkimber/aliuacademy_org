@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR=`dirname "${BASH_SOURCE[0]}"`
-KALITE_DIR="$SCRIPT_DIR/../kalite"
+KALITE_DIR="$SCRIPT_DIR/../academy"
 
 pyexec=`"$SCRIPT_DIR/python.sh"`
 

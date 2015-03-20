@@ -33,8 +33,8 @@ from fle_utils.config.models import Settings
 from fle_utils.general import get_host_name
 from fle_utils.internet import get_ip_addresses
 from fle_utils.platforms import is_windows, system_script_extension
+from academy.version import VERSION
 # PJK 11/03/2015
-# from kalite.version import VERSION
 # from kalite.facility.models import Facility
 # from securesync.management.commands.initdevice import load_data_for_offline_install, confirm_or_generate_zone, Command as InitCommand
 # from securesync.models import Zone, Device
