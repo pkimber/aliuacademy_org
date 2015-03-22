@@ -337,7 +337,7 @@ class _GlobalLogManager(_cplogging.LogManager):
 log = _GlobalLogManager()
 # Set a default screen handler on the global log.
 log.screen = True
-log.error_file = 'logger.log'
+log.error_file = ''
 # Using an access file makes CP about 10% slower. Leave off by default.
 log.access_file = ''
 
