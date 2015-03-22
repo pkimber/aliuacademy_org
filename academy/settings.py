@@ -106,11 +106,13 @@ LANGUAGE_CODE  = getattr(local_settings, "LANGUAGE_CODE", "en")
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N       = getattr(local_settings, "USE_I18N", True)
+# PJK 22/03/2015
+USE_I18N       = False #getattr(local_settings, "USE_I18N", True)
 
 # If you set this to True, Django will format dates, numbers and
 # calendars according to the current locale
-USE_L10N       = getattr(local_settings, "USE_L10N", False)
+# PJK 22/03/2015
+USE_L10N       = False #getattr(local_settings, "USE_L10N", False)
 
 MEDIA_URL      = getattr(local_settings, "MEDIA_URL", "/media/")
 MEDIA_ROOT     = os.path.realpath(getattr(local_settings, "MEDIA_ROOT", PROJECT_PATH + "/media/")) + "/"
