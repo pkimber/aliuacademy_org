@@ -1,7 +1,7 @@
 @echo off
 
 set "SCRIPT_DIR=%~dp0"
-set "KALITE_DIR=%SCRIPT_DIR%..\kalite"
+set "KALITE_DIR=%SCRIPT_DIR%..\academy"
 
 if exist "%KALITE_DIR%\runcherrypyserver.pid" (
     rem have to change directory, in order to make sure we can access the pid file

@@ -141,3 +141,14 @@ problem:
 
   # python-packages/cherrypy/__init__.py
   log.error_file = 'logger.log'
+
+30/05/2015
+----------
+
+Set-up program has a version number now :)
+
+Does not detect existing install of python.
+
+Name should be "Aliu" not "Aliua"
+
+Name of installer should be "aliuacademy-installer-windows" not "aliauacademy-installer-windows"
