@@ -6,7 +6,7 @@ if not exist "%SCRIPT_DIR%\python.bat" (
     set "SCRIPT_DIR=%SCRIPT_DIR%\scripts"
 )
 
-call "%SCRIPT_DIR%\cronstop.bat"
+rem (we won't be using cron call) "%SCRIPT_DIR%\cronstop.bat"
 call "%SCRIPT_DIR%\serverstop.bat"
 
 echo.
