@@ -145,10 +145,16 @@ problem:
 30/05/2015
 ----------
 
-Set-up program has a version number now :)
+- Set-up program has a version number now :)
+- Renamed test data so Windows is happy.
 
-Does not detect existing install of python.
+Issues
 
-Name should be "Aliu" not "Aliua"
-
-Name of installer should be "aliuacademy-installer-windows" not "aliauacademy-installer-windows"
+- Does not detect existing install of python so we have to "repair".
+- Name should be "Aliu" not "Aliua"
+- Name of installer should be "aliuacademy-installer-windows" not "aliauacademy-installer-windows"
+- exe file name has two dots: "AliuAcademy-1.0.0..exe" should be just one.
+- Missing icon on start menu.
+- No favicon in the browser tab.
+- No option to "Stop Server" after starting.
+- "Stop Server" batch file does not stop a running server.
