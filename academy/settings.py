@@ -5,6 +5,7 @@ import platform
 #from fle_utils.settingshelper import import_installed_app_settings
 
 # PJK 11/03/2015
+from django.core.urlresolvers import reverse_lazy
 from django.utils import six
 
 
@@ -184,14 +185,16 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + KA_LITE_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # PJK 31/03/2015
     # "django.contrib.messages.middleware.MessageMiddleware",  # needed for django admin
     # PJK 20/03/2015
     # "django_snippets.session_timeout_middleware.SessionIdleTimeout",
 ) + getattr(local_settings, 'MIDDLEWARE_CLASSES', tuple())
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.messages.context_processors.messages",  # needed for django admin
-) + getattr(local_settings, 'TEMPLATE_CONTEXT_PROCESSORS', tuple())
 
 TEMPLATE_DIRS  = tuple()  # will be filled recursively via INSTALLED_APPS
 # PJK 19/03/2015
@@ -312,3 +315,7 @@ SENDFILE_ROOT = 'media-private'
 # PJK 11/03/2015
 FTP_STATIC_DIR = None
 FTP_STATIC_URL = None
+
+# URL where requests are redirected after login when the contrib.auth.login
+# view gets no next parameter.
+LOGIN_REDIRECT_URL = reverse_lazy('web.university.list')

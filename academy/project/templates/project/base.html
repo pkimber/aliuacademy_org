@@ -52,7 +52,11 @@
                 <li class="pure-menu-item {% if 'academy' in path %}pure-menu-selected{% endif %}"><a href="{% url 'web.university.list' %}" class="pure-menu-link">My Universities</a></li>
                 <li class="pure-menu-item"> <a href="{% url 'logout' %}" class="pure-menu-link">Logout</a></li> 
                 {% else %}
-                <li class="pure-menu-item"><a href="{% url 'login' %}" class="pure-menu-link">Login</a></li>
+                <li class="pure-menu-item">
+                  <a href="{% url 'login' %}" class="pure-menu-link">
+                    Login
+                  </a>
+                </li>
                 <li class="pure-menu-item"><a href="{% url 'register' %}" class="pure-menu-link">Register</a></li>
                 {% endif %}
             </ul>

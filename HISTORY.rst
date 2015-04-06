@@ -7,7 +7,7 @@ KB Software
 
 ::
 
-  cd /home/patrick/repo/dev/project/lite_aliuacademy_org
+  cd /home/patrick/repo/dev/project/aliuacademy_org
   deactivate
   unset DJANGO_SETTINGS_MODULE
   ./setup_unix.sh
