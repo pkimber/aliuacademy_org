@@ -39,13 +39,24 @@ nosetests.xml
 
 # dev
 .cache
+Downloads/
 logfile
+logger.log
 logfile.*
 media
 media-private
 temp.db
 venv-*
 web_static
+
+# dev - auto generated files in the root folder
+/start.sh
+/stop.sh
+/run_command.sh
+
+# dev - auto generated files
+/academy/database/data.sqlite
+/academy/static/
 
 # private info
 .private
