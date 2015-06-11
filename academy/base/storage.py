@@ -1,6 +1,4 @@
 # -*- encoding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.core.files.storage import get_storage_class
 from storages.backends.s3boto import S3BotoStorage
 
