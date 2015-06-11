@@ -5,7 +5,7 @@ from login.tests.model_maker import (
     make_superuser,
     make_user,
 )
-from mail.tests.factories import NotifyFactory
+#from mail.tests.factories import NotifyFactory
 
 
 STAFF = 'staff'
@@ -45,7 +45,7 @@ def default_scenario_login():
         'web', email='web@pkimber.net',
         first_name='William', last_name='Webber'
     )
-    NotifyFactory()
+    #NotifyFactory()
 
 
 def user_contractor():

@@ -1,0 +1,7 @@
+-e .
+factory-boy
+pytest
+pytest-cov
+pytest-django
+pytest-flakes
+pytest-pep8

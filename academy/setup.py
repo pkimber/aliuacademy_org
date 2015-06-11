@@ -20,7 +20,7 @@ def get_readme():
 
 setup(
     name='kb-aliuacademy-org',
-    packages=['project', 'project.management', 'project.management.commands', 'web', 'web.tests', 'web.management', 'web.management.commands', 'settings'],
+    packages=['project', 'project.management', 'project.management.commands', 'web', 'web.tests', 'web.management', 'web.management.commands'],
     package_data={
         'project': [
             'static/*.*',
