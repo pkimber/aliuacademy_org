@@ -11,4 +11,4 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         VideoReader(settings.MEDIA_ROOT).update()
-        print("Initialised '{}' app...".format(settings.SITE_NAME))
+        print("Initialised video database...")

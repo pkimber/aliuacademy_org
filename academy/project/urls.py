@@ -9,8 +9,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 from login.views import RegisterCreateView
-
 from web.views import AboutView
+from web.views import SettingsView
 
 
 admin.autodiscover()
@@ -27,6 +27,10 @@ urlpatterns = patterns(
         ),
     url(regex=r'^admin/',
         view=include(admin.site.urls)
+        ),
+    url(regex=r'^settings/$',
+        view=SettingsView.as_view(),
+        name='project.settings'
         ),
     url(regex=r'^web/',
         view=include('web.urls')

@@ -43,10 +43,10 @@ class TestLogin(TestCase):
             'username': 'patrick',
             'password': TEST_PASSWORD,
         }
-        url = '%s?next=/test/' % reverse('login')
+        url = '%s?next=/web/about/' % reverse('login')
         response = self.client.post(url, data)
         # check the user was redirected to the test page
-        self.assertRedirects(response, reverse('example.test'))
+        self.assertRedirects(response, reverse('web.about'))
         # check the user was logged in
         self.assertIn(SESSION_KEY, self.client.session)
         self.assertEquals(user_pk, self.client.session[SESSION_KEY])

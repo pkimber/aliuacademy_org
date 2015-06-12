@@ -6,7 +6,10 @@ from django.views.generic import (
     TemplateView,
 )
 
-from braces.views import LoginRequiredMixin
+from braces.views import (
+    LoginRequiredMixin,
+    StaffuserRequiredMixin,
+)
 
 from base.view_utils import BaseMixin
 
@@ -21,6 +24,12 @@ from .models import (
 class AboutView(BaseMixin, TemplateView):
 
     template_name = 'web/about.html'
+
+
+class SettingsView(
+        LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, TemplateView):
+
+    template_name = 'web/settings.html'
 
 
 class DepartmentCourseListView(
