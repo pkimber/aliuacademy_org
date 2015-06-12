@@ -43,15 +43,22 @@ Change into the ``academy`` folder::
 
   cd academy/
 
-To set-up a demo database for development::
+To run the tests, initialise the database and run the development server::
 
   ./init_dev.sh
 
-Browse to http://localhost:8000/
+To run the development server without initialising the database::
 
-Click *Login*::
+  python manage.py runserver
+
+Browse to http://localhost:8085/
+
+Click *Login* and login as a standard web user or a member of staff::
 
   Username      web
+  Password      letmein
+
+  Username      staff
   Password      letmein
 
 .. note:: The videos in the ``web/tests/data/ftp_static_dir`` folders are not

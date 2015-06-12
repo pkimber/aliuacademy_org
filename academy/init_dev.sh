@@ -5,9 +5,8 @@ set -e
 set -u
 
 py.test -x
-touch temp.db && rm temp.db
-django-admin.py syncdb --noinput
-django-admin.py migrate --noinput
-django-admin.py demo_data_login
-django-admin.py init_app_web
-django-admin.py runserver
+touch database/data.sqlite && rm database/data.sqlite
+python manage.py migrate --noinput
+python manage.py demo_data_login
+python manage.py init_app_web
+python manage.py runserver

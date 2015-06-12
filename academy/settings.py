@@ -116,7 +116,8 @@ USE_I18N       = False #getattr(local_settings, "USE_I18N", True)
 USE_L10N       = False #getattr(local_settings, "USE_L10N", False)
 
 MEDIA_URL      = getattr(local_settings, "MEDIA_URL", "/media/")
-MEDIA_ROOT     = os.path.realpath(getattr(local_settings, "MEDIA_ROOT", PROJECT_PATH + "/media/")) + "/"
+MEDIA_ROOT     = os.path.normpath(os.path.join(PROJECT_PATH, '..', 'content'))
+
 STATIC_URL     = getattr(local_settings, "STATIC_URL", "/static/")
 STATIC_ROOT    = os.path.realpath(getattr(local_settings, "STATIC_ROOT", PROJECT_PATH + "/static/")) + "/"
 
@@ -178,6 +179,9 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + KA_LITE_APPS
 
 # PJK 11/03/2015
 # if not BUILT:
+print()
+print()
+print()
 #     INSTALLED_APPS += (
 #         "fle_utils.testing",
 #         "academy.testing",

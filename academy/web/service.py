@@ -43,7 +43,6 @@ class VideoReader(object):
     def _read_courses(self, university, department):
         folder = os.path.join(
             self.folder,
-            'academy',
             university,
             department,
         )
@@ -62,7 +61,6 @@ class VideoReader(object):
     def _read_departments(self, university):
         folder = os.path.join(
             self.folder,
-            'academy',
             university,
         )
         folders = os.listdir(folder)
@@ -76,7 +74,6 @@ class VideoReader(object):
     def _read_topics(self, university, department, course):
         folder = os.path.join(
             self.folder,
-            'academy',
             university,
             department,
             course,
@@ -95,7 +92,6 @@ class VideoReader(object):
                     course,
                     number_from_string(topic),
                     os.path.join(
-                        'academy',
                         university,
                         department,
                         course,
@@ -107,7 +103,6 @@ class VideoReader(object):
     def _read_universities(self):
         folder = os.path.join(
             self.folder,
-            'academy'
         )
         folders = os.listdir(folder)
         for university in folders:
