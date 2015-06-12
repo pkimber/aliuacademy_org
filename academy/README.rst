@@ -4,11 +4,18 @@ aliuacademy.org
 Development
 ===========
 
+.. note:: All development takes place in the ``aliuacademy_org/academy``
+          folder.
+
 Install
 -------
 
 Virtual Environment
 -------------------
+
+Change into the ``academy`` folder::
+
+  cd academy/
 
 ::
 
@@ -32,6 +39,10 @@ Testing
 Usage
 -----
 
+Change into the ``academy`` folder::
+
+  cd academy/
+
 To set-up a demo database for development::
 
   ./init_dev.sh
@@ -53,9 +64,13 @@ Documentation
 The documentation can be found in the ``docs`` folder.  To build the
 documentation::
 
-  cd docs && make html && cd .. && firefox docs/build/html/index.html &
+  cd academy/
+  cd docs && make clean html; cd -
+  # to view the docs in your browser
+  firefox docs/build/html/index.html &
 
 Release and Deploy
 ==================
 
-https://www.pkimber.net/open/
+This project is installed onto a Windows computer using a copy of the KALite
+installer.
