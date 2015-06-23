@@ -99,6 +99,7 @@ a.pure-button-primary {
 }
 
 .content {
+	height: auto;
     padding: 1em;
     padding-left: 5%;
     padding-right: 5%;
@@ -233,6 +234,13 @@ a.pure-button-primary {
     color: #b6ff56;
 }
 
+
+video {
+  width: 100%  ;
+  max-width: 600px;
+  height: auto  ;
+}
+
 @media (max-width: 47.999em) {
 
     .custom-menu-3 {
@@ -295,3 +303,5 @@ a.pure-button-primary {
     }
 
 }
+
+

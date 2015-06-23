@@ -1,9 +1,12 @@
 # -*- encoding: utf-8 -*-
 from django.shortcuts import get_object_or_404
+from django.core.management import call_command
+	
 from django.views.generic import (
     DetailView,
     ListView,
     TemplateView,
+	RedirectView
 )
 
 from braces.views import (
@@ -25,7 +28,14 @@ class AboutView(BaseMixin, TemplateView):
 
     template_name = 'web/about.html'
 
+class DBRebuildView(
+        LoginRequiredMixin, StaffuserRequiredMixin, RedirectView):
+	url = '/web/academy/university/'
+	call_command('init_app_web')
 
+
+
+	
 class SettingsView(
         LoginRequiredMixin, StaffuserRequiredMixin, BaseMixin, TemplateView):
 
