@@ -3,6 +3,12 @@ Video
 
 .. highlight:: bash
 
+Videos cannot be downloaded to an iPhone.  It is forbidden - unless you
+purchase a special browser.
+
+Old Notes
+=========
+
 To copy videos to the folders, start the file manager with root permission::
 
   sudo -i
