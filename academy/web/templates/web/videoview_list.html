@@ -1,0 +1,35 @@
+{% extends 'web/base_sidebar.html' %}
+{% load staticfiles %}
+
+{% block sub_title %}
+  User Profile
+{% endblock sub_title %}
+
+{% block sub_heading %}
+  Topics
+{% endblock sub_heading %}
+
+{% block content %}
+<h1 class="content-head">Viewed Topics</h1>
+<p>
+Click to select a recently viewed or downloaded topic.
+</p>
+{% endblock content %}
+
+   
+{% block sidemenuitems %}
+
+    <li><span class="pure-menu-link pure-menu-heading">Topics Viewed</span></li>
+
+    {% for vw in view_list %}
+    <li class="pure-menu-item"><a href="{% url 'web.topic.detail' vw.viewed_topic.id %}" class="pure-menu-link">{{ vw.viewed_topic.name }} <i class="fa fa-eye"></i> {{ vw.viewed }}</a></li>
+    {% endfor %}
+
+    <li><span class="pure-menu-link pure-menu-heading">Topics Downloaded</span></li>
+
+    {% for dl in dl_list %}
+    <li class="pure-menu-item"><a href="{% url 'web.topic.detail' dl.viewed_topic.id %}" class="pure-menu-link">{{ dl.viewed_topic.name }} <i class="fa fa-folder-o"></i> {{ dl.downloaded }}</a></li>
+    {% endfor %}
+        
+{% endblock sidemenuitems %}
+
