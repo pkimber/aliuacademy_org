@@ -24,6 +24,9 @@
 
     <link rel="stylesheet" href="{% static 'base/css/base.css' %}"> 
     <link rel="stylesheet" href="{% static 'css/project/aliua_academy.css' %}">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+	
 
 </head>
 <body>
@@ -48,8 +51,10 @@
         <div class="pure-menu pure-menu-horizontal custom-menu-3 custom-can-transform">
             <ul class="pure-menu-list">
                 {% if user.is_authenticated %}
-                <li class="pure-menu-heading">Hello, {{ user.username }}: </li>   
+                <li class="pure-menu-heading">Hello, {{ user.username }}</li>                    
                 <li class="pure-menu-item {% if 'academy' in path %}pure-menu-selected{% endif %}"><a href="{% url 'web.university.list' %}" class="pure-menu-link">My Universities</a></li>
+                <li class="pure-menu-item"><a href="{% url 'project.settings' %}" class="pure-menu-link">Settings</a></li>
+                <li class="pure-menu-item"><a href="{% url 'web.userprofile' %}" class="pure-menu-link">View History</a></li> 
                 <li class="pure-menu-item"> <a href="{% url 'logout' %}" class="pure-menu-link">Logout</a></li> 
                 {% else %}
                 <li class="pure-menu-item">

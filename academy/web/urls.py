@@ -13,6 +13,9 @@ from .views import (
     UniversityListView,
     UniversitiesView,
     VisionView,
+    VideoViewListView,    
+    AjaxCommandView,
+    DownloadMediaView
 )
 
 
@@ -46,8 +49,20 @@ urlpatterns = patterns(
         view=UniversitiesView.as_view(),
         name='web.universities'
         ),
+    url(regex=r'^userprofile/$',
+        view=VideoViewListView.as_view(),
+        name='web.userprofile'
+        ),
     url(regex=r'^vision/$',
         view=VisionView.as_view(),
         name='web.vision'
+        ),
+    url(regex=r'^ajaxcall/(?P<cmd>.*)/(?P<pk>\d+)/$',
+        view=AjaxCommandView,
+        name='ajaxcall.command.topic'
+        ),
+    url(regex=r'^download/(?P<tpc_id>.*)/$',
+        view=DownloadMediaView,
+        name='download.media'
         ),
 )

@@ -28,7 +28,7 @@ urlpatterns = patterns(
         ),
     url(regex=r'^rebuilddb/',
         view=DBRebuildView.as_view(),
-        name='project.settings'
+        name='project.settings.rebuilddb'
         ),
     url(regex=r'^admin/',
         view=include(admin.site.urls)
@@ -40,6 +40,7 @@ urlpatterns = patterns(
     url(regex=r'^web/',
         view=include('web.urls')
         ),
+
     url(regex=r'^accounts/register/$',
         view=RegisterCreateView.as_view(),
         name='register'

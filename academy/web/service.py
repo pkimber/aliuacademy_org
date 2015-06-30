@@ -40,6 +40,33 @@ class VideoReader(object):
         """Initialise with 'settings.MEDIA_ROOT'."""
         self.folder = folder
 
+    def _read_universities(self):
+        folder = os.path.join(
+            self.folder,
+        )
+        folders = os.listdir(folder)
+        for university in folders:
+            path = os.path.join(folder, university)
+            if os.path.isdir(path):
+                print('University: {}'.format(university))
+                University.objects.update_university(university)
+                self._read_departments(university)
+
+
+    def _read_departments(self, university):
+        folder = os.path.join(
+            self.folder,
+            university,
+        )
+        folders = os.listdir(folder)
+        for department in folders:
+            path = os.path.join(folder, department)
+            if os.path.isdir(path):
+                print('Department: {}'.format(department))
+                Department.objects.update_department(university, department)
+                self._read_courses(university, department)
+                
+                
     def _read_courses(self, university, department):
         folder = os.path.join(
             self.folder,
@@ -56,62 +83,63 @@ class VideoReader(object):
                 Course.objects.update_course(
                     university, department, order, course
                 )
+                #collect video files in the root of the course folder
                 self._read_topics(university, department, course)
+                
+                #collect ware files in the root/ware folder of the course folder
+                self._read_ware(university, department, course)
 
-    def _read_departments(self, university):
-        folder = os.path.join(
-            self.folder,
-            university,
-        )
-        folders = os.listdir(folder)
-        for department in folders:
-            path = os.path.join(folder, department)
-            if os.path.isdir(path):
-                print('Department: {}'.format(department))
-                Department.objects.update_department(university, department)
-                self._read_courses(university, department)
 
     def _read_topics(self, university, department, course):
-        folder = os.path.join(
-            self.folder,
+        video_folder = os.path.join(
             university,
             department,
             course,
         )
-        order = 0
+        self._collect_files(video_folder, Topic.VIDEO, university, department, course)
+
+    def _read_ware(self, university, department, course):
+        ware_folder = os.path.join(
+            university,
+            department,
+            course,
+            'ware',
+        )
+        print('WARE',ware_folder)
+        if os.path.exists(os.path.join(self.folder,ware_folder)):
+            self._collect_files(ware_folder, Topic.WARE, university, department, course)
+    
+    def _collect_files(self, src_folder, file_type,  university, department, course):
+        folder = os.path.join(self.folder,src_folder)
+        order = 0   
         files = os.listdir(folder)
         files.sort()
         for topic in files:
             path = os.path.join(folder, topic)
+            print('Path:',path)
             if os.path.isfile(path):
                 order = order + 1
-                print('Topic: {}'.format(topic))
-                Topic.objects.update_topic(
+                print('Topic Type {}: {}'.format(file_type, topic))
+                t = Topic.objects.update_topic(
                     university,
                     department,
                     course,
-                    number_from_string(topic),
+                    order,                      # IS THIS IMPORTANT? ==> number_from_string(topic),   NB: does not work for loosely named courseware
                     os.path.join(
-                        university,
-                        department,
-                        course,
+                        src_folder,
                         topic,
                     ),
-                    topic
+                    topic,
+                    file_type,
                 )
-
-    def _read_universities(self):
-        folder = os.path.join(
-            self.folder,
-        )
-        folders = os.listdir(folder)
-        for university in folders:
-            path = os.path.join(folder, university)
-            if os.path.isdir(path):
-                print('University: {}'.format(university))
-                University.objects.update_university(university)
-                self._read_departments(university)
+                
+                
+                
 
     def update(self):
         """Update the database based on the folder structure."""
+        University.objects.deactivate_all()
+        Department.objects.deactivate_all()
+        Course.objects.deactivate_all()
+        Topic.objects.deactivate_all()
         self._read_universities()
