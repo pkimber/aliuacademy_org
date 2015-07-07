@@ -26,7 +26,7 @@ Content
 
 ::
 
-  C:\Program Files (x86)\AliuaAcademy\aliuacademy_org\content\
+  C:\Program Files (x86)\AliuAcademy\aliuacademy_org\content\
 
 For testing, you could use a structure of universities and courses like this::
 
@@ -53,8 +53,8 @@ This project was built using the following software:
 
   https://git-scm.com/download/win
 
-  (note: install with the option to place the `git` executable in the path,
-  so it can be run within `cmd`)
+.. note:: install with the option to place the ``git`` executable in the path,
+          so it can be run within ``cmd``.
 
 Instructions to update Microsoft Visual Studio 2012:
 
@@ -69,25 +69,13 @@ Install the downloaded update in your machine:
 - Click on BUILD.
 - Select Build Solution.
 
-Instructions to build "AliauAcademy.exe":
+Instructions to build ``AliuAcademy.exe``:
 
 - Clone this repository;
 - Open `cmd` -- the Windows command prompt;
-- Run `git submodule update --init`
 - Run `make.vbs` and wait until the file is built;
 - The output file named ``KALiteSetup.exe`` will appear within this project
   folder.
-
-To clone this repository, run the following line::
-
-  git clone --recursive https://github.com/timitee/aliauacademy-installer-windows/
-
-(the `--recursive` is required due to the `ka-lite` submodule)
-
-AliuaAcademy
-
-  AliuaAcademy_org folder should be placed directly inside
-  ``ka-lite-installer-windows``
 
 If you wish to build it using Wine, run the following line::
 
