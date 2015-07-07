@@ -1,8 +1,33 @@
 AliauAcademy Installer for Windows
-==================================
+**********************************
 
 This project provides a smoother way to install and run AliauAcademy in a
 Windows Machine.
+
+Folders
+=======
+
+The folder structure for this project is confusing::
+
+  # installer (uses inno setup compiler)
+    # batch and script files to start/stop the server
+      # django project
+
+Content
+-------
+
+::
+
+  C:\Program Files (x86)\AliuaAcademy\aliuacademy_org\content\
+
+For testing, you could use a structure of universities and courses like this::
+
+  Exeter
+    IT
+      Intro
+
+Installer
+=========
 
 This project was built using the following software:
 
@@ -56,3 +81,16 @@ AliuaAcademy
 If you wish to build it using Wine, run the following line::
 
   wine inno-compiler/ISCC.exe installer-source/KaliteSetupScript.iss
+
+Installer
+=========
+
+The KALite installer runs through as expected:
+
+  Setup will now configure the database...  Please be patient.
+
+  Setup has finished...  Launch KA Lite
+
+  When I click start server, there is a tooltip which pops up above the task
+  bar icon to say The server is starting, please wait.  It then says KA Lite is
+  running and gives the URL or you can select "Load in browser".
