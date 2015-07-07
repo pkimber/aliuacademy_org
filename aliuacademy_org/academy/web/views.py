@@ -63,7 +63,10 @@ def DownloadMediaView(request,tpc_id):
     print(full_path)
     file = FileWrapper(open(full_path, 'rb'))
     response = HttpResponse(file)
-    response['Content-Disposition'] = 'attachment; filename=%s' % tpc.download_file_name()
+    #response['Content-Disposition'] = 'attachment; filename=%s' % tpc.download_file_name()
+    #response['Content-Type'] = 'application/octet-stream'
+    response['Content-Type'] = 'application/octet-stream'
+    response['Content-Disposition'] = 'attachment; filename="one.mp4"'
     return response
 
        
