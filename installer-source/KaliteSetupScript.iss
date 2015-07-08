@@ -303,13 +303,13 @@ procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
 begin
-    if(MsgBox('Python error' #13#13 'Python 3.4+ is required to run AliuAcademy; do you wish to first install Python 3.4.3, before continuing with the installation of AliuAcademy?', mbConfirmation, MB_YESNO) = idYes) then
+    if(MsgBox('Install Python?' #13#13 'Python 3.4+ is required to run AliuAcademy; do you wish to first install Python 3.4.3, before continuing with the installation of AliuAcademy?', mbConfirmation, MB_YESNO) = idYes) then
     begin
         ExtractTemporaryFile('python-3.4.3.msi');
         ShellExec('open', ExpandConstant('{tmp}')+'\python-3.4.3.msi', '', '', SW_SHOWNORMAL, ewWaitUntilTerminated, installPythonErrorCode);  
     end
     else begin
-        MsgBox('Error' #13#13 'You must have Python 3.4+ installed to proceed! Installation will now exit.', mbError, MB_OK);
+        MsgBox('Python Missing' #13#13 'You must have Python 3.4+ installed to proceed! Installation will now exit.', mbError, MB_OK);
         forceCancel := True;
         WizardForm.Close;
     end;
