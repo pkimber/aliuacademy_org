@@ -181,24 +181,27 @@ class Course(FlaggedTimeStampedModel):
 reversion.register(Course)
 
 
-
-        
 class ActiveVideoManager(ActiveFlagTimeStampedManager):
     """
     A class to only return active Unis, Departs, Courses or Topics
     """
     def get_queryset(self):
-        return super(ActiveFlagTimeStampedManager, self).get_queryset().filter(is_active=1,file_type=Topic.VIDEO)    
-          
+        return super().get_queryset().filter(
+            is_active=1,
+            file_type=Topic.VIDEO
+        )
 
-        
+
 class ActiveWareManager(ActiveFlagTimeStampedManager):
     """
     A class to only return active Unis, Departs, Courses or Topics
     """
     def get_queryset(self):
-        return super(ActiveFlagTimeStampedManager, self).get_queryset().filter(is_active=1,file_type=Topic.WARE)    
-          
+        return super().get_queryset().filter(
+            is_active=1,
+            file_type=Topic.WARE
+        )
+
 
 class TopicManager(FlaggedTimeStampedManager):
 
@@ -236,7 +239,6 @@ class TopicManager(FlaggedTimeStampedManager):
             )
 
 
-
 class Topic(FlaggedTimeStampedModel):
 
     """File stores the Video for the Topic."""
@@ -270,21 +272,32 @@ class Topic(FlaggedTimeStampedModel):
 
     def download_file_name(self):
         return os.path.basename(self.video.name)
-        
-    def get_next(self):
-        next = Topic.active_objects.filter(course=self.course,order__gt=self.order).order_by('order')
-        if next:
-            return next[0]
-        return False
 
+    @property
+    def get_next(self):
+        topic = Topic.active_objects.filter(
+            course=self.course,
+            order__gt=self.order,
+        ).order_by(
+            'order'
+        )
+        if topic:
+            return topic[0]
+        return None
+
+    @property
     def get_prev(self):
-        prev = Topic.active_objects.filter(course=self.course,order__lt=self.order).order_by('-order')
-        if prev:
-            return prev[0]
-        return False
+        topic = Topic.active_objects.filter(
+            course=self.course,
+            order__lt=self.order,
+        ).order_by(
+            '-order'
+        )
+        if topic:
+            return topic[0]
+        return None
 
 reversion.register(Topic)
-
 
 
 class VideoViewManager(FlaggedTimeStampedManager):
