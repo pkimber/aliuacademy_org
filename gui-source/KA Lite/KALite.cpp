@@ -33,7 +33,7 @@ void startServerAction()
 		needNotify = true;
 		isServerStarting = true;
 
-		window->sendTrayMessage("AliuAcademy", "The server is starting... please wait");
+		window->sendTrayMessage("AliuAcademy", "The server is starting... please wait...");
 	}
 }
 
