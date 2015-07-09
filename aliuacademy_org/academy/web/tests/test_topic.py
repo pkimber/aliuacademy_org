@@ -19,5 +19,6 @@ class TestTopic(TestCase):
             course=course,
             order=1,
             file_path='/home/patrick/video.mp4',
+            file_type=Topic.VIDEO,
         )
         assert 'video.mp4' == topic.download_file_name()

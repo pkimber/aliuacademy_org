@@ -23,19 +23,25 @@
         <span class="counterbox" style="" title="View Count"><i class="fa fa-eye"></i> <span  id="vd_viewcount">{{vid_vw.views|default_if_none:0}}</span></span>
         <span class="counterbox" style="" title="Download Count"><i class="fa  fa-folder-o"></i> <span  id="vd_dlcount">{{vid_vw.dls|default_if_none:0}}</span></span>
 
-        {% if topic.get_prev %}<a href="{% url 'web.topic.detail' topic.get_prev.id %}" class="pure-button counterbox" >Prev</a>{% endif %}
-        {% if topic.get_next %}<a href="{% url 'web.topic.detail' topic.get_next.id %}" class="pure-button counterbox" >Next</a>{% endif %}
-        
-        
+        {% if topic.get_prev %}
+          <a href="{% url 'web.topic.detail' topic.get_prev.id %}" class="pure-button counterbox" >Prev</a>
+        {% endif %}
+        {% if topic.get_next %}
+          <a href="{% url 'web.topic.detail' topic.get_next.id %}" class="pure-button counterbox" >Next</a>
+        {% endif %}
+
         <a id="vd_download" href="{% url 'download.media' topic.pk %}" download="{{ topic.download_file_name }}" class="pure-button" style="float:right;">
-        <i class="fa fa-download"></i> MIME
+          <i class="fa fa-download"></i>
+          Download
         </a>
+        <!--
         <a id="vd_download2" href="{{ topic.video.url }}" download="{{ topic.download_file_name }}" class="pure-button" style="float:right;">
-        <i class="fa fa-download"></i> HREF 
+          <i class="fa fa-download"></i>
+          HREF
         </a>
+        -->
     </div>
 
-    
     <div id="comment_list" style="margin-top:30px;width:100%;">
     <div class="pure-menu-heading">Comments</div>
     {% for cmt in comment_list %}
@@ -46,7 +52,6 @@
     {% endfor %}
     </div>
 
-        
     <div style="margin-top:30px;width:100%;">
         <form action="" method="post">{% csrf_token %}
             {{ form.as_p }}
