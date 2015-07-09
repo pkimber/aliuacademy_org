@@ -105,18 +105,18 @@ class VideoReader(object):
             course,
             'ware',
         )
-        print('WARE',ware_folder)
+        print('WARE', ware_folder)
         if os.path.exists(os.path.join(self.folder,ware_folder)):
             self._collect_files(ware_folder, Topic.WARE, university, department, course)
-    
+
     def _collect_files(self, src_folder, file_type,  university, department, course):
-        folder = os.path.join(self.folder,src_folder)
-        order = 0   
+        folder = os.path.join(self.folder, src_folder)
+        order = 0
         files = os.listdir(folder)
         files.sort()
         for topic in files:
             path = os.path.join(folder, topic)
-            print('Path:',path)
+            print('Path:', path)
             if os.path.isfile(path):
                 order = order + 1
                 print('Topic Type {}: {}'.format(file_type, topic))
@@ -125,16 +125,10 @@ class VideoReader(object):
                     department,
                     course,
                     order,                      # IS THIS IMPORTANT? ==> number_from_string(topic),   NB: does not work for loosely named courseware
-                    os.path.join(
-                        src_folder,
-                        topic,
-                    ),
+                    os.path.join(src_folder, topic),
                     topic,
                     file_type,
                 )
-                
-                
-                
 
     def update(self):
         """Update the database based on the folder structure."""

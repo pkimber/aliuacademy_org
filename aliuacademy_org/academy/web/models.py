@@ -228,6 +228,7 @@ class TopicManager(FlaggedTimeStampedManager):
                 video=path,
             )
             tpc_match.is_active = 1
+            tpc_match.order = order
             tpc_match.save()
             return tpc_match
         except Topic.DoesNotExist:
