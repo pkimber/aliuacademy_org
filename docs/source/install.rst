@@ -24,19 +24,24 @@ Run the ``AliuAcademy-1.0.0.0.exe`` installer.
 
 At the *Install Python?* prompt, click *Yes*
 
-At the *Server Information* page leave the *Server name* and *Server
-description* empty.
+At the *Server Information* page:
 
-At the *Admin Information* page enter a *Username* and *Password*.
+  Leave the *Server name* and *Server description* empty.
 
-.. note:: Make a careful note of the *Username* and *Password*.  You will need
-          them to login into the site.
+At the *Admin Information* page:
 
-At the *Server Configuration* page, choose the option to *Do not run the server
-at startup*.
+  Enter a *Username* and *Password*.
 
-At the *Select Additional Tasks* page, do **not** tick the *Create a desktop
-icon* box.
+.. important:: Make a careful note of the *Username* and *Password*.  You will
+               need them to login into the site.
+
+At the *Server Configuration* page:
+
+  Choose the option to *Do not run the server at startup*.
+
+At the *Select Additional Tasks* page:
+
+  Do **not** tick the *Create a desktop icon* box.
 
 Run
 ***
@@ -46,12 +51,15 @@ If you don't have the *AliuAcademy* icon in the task bar:
   Click on the *Start* button, select *All Programs*, *AliuAcademy*, and click
   on *AliuAcademy*.
 
-Right click on the *AliuAcademy* icon in the task bar and click *Start Server*.
+Right click on the *AliuAcademy* icon in the task bar:
+
+  Click *Start Server*.
 
 If you get Firewall warnings, allow *AliuAcademy* through.
 
-Right click on the *AliuAcademy* icon in the task bar and click *Load in
-browser*.
+Right click on the *AliuAcademy* icon in the task bar:
+
+  Click *Load in browser*.
 
 Videos and Course Material
 ==========================
@@ -71,13 +79,17 @@ topic::
 
   C:\Program Files\AliuAcademy\aliuacademy_org\content\Exeter\IT\Intro\
 
-Copy videos into the topic folder e.g. ``Intro``.
+Copy your videos into the appropriate topic folder e.g::
+
+  C:\Program Files\AliuAcademy\aliuacademy_org\content\Exeter\IT\Intro\
 
 Create a ``ware`` sub-folder for the course documents::
 
   C:\Program Files\AliuAcademy\aliuacademy_org\content\Exeter\IT\Intro\ware\
 
-Copy course materials into the ``ware`` folder.
+Copy course materials into the ``ware`` folder e.g::
+
+  C:\Program Files\AliuAcademy\aliuacademy_org\content\Exeter\IT\Intro\ware\
 
 Run the *AliuAcademy* site (see *Run* section above).
 
