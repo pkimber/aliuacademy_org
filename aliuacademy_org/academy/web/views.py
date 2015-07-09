@@ -64,7 +64,7 @@ def DownloadMediaView(request, topic_id):
     response = HttpResponse(video_file)
     response['Content-Type'] = 'application/octet-stream'
     response['Content-Disposition'] = 'attachment; filename="{}"'.format(
-        topic.download_file_name()
+        topic.download_file_name().replace(' ', '-')
     )
     return response
 
