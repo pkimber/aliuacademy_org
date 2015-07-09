@@ -62,8 +62,7 @@ def DownloadMediaView(request, topic_id):
     full_path = '{}/{}'.format(settings.MEDIA_ROOT, topic.video)
     video_file = FileWrapper(open(full_path, 'rb'))
     response = HttpResponse(video_file)
-    # Do we need the following line for Android download?
-    # response['Content-Type'] = 'application/octet-stream'
+    response['Content-Type'] = 'application/octet-stream'
     response['Content-Disposition'] = 'attachment; filename="{}"'.format(
         topic.download_file_name()
     )
