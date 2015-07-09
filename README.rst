@@ -56,27 +56,42 @@ This project was built using the following software:
 .. note:: install with the option to place the ``git`` executable in the path,
           so it can be run within ``cmd``.
 
-Instructions to update Microsoft Visual Studio 2012:
+Update Microsoft Visual Studio
+------------------------------
 
-Steps to update:
+To install the service pack updates for Microsoft Visual Studio 2012:
 
-- Click on TOOLS menu
-- Select Extensions and Updates... then another dialog will appear.
-- Click on Update.
+- Click on *TOOLS* menu
+- Select *Extensions and Updates...* then another dialog will appear.
+- Click on *Updates*.
 
 Install the downloaded update in your machine:
 
-- Click on BUILD.
+- Click on *BUILD*.
 - Select Build Solution.
 
-Instructions to build ``AliuAcademy.exe``:
+Build - Taskbar Extension
+=========================
+
+The source code for the taskbar extension is ``gui-source/KA Lite/KALite.cpp``.
+
+If you change this code, then you will need to rebuild it:
+
+- Open *Visual Studio Express* and then open the following solution:
+  ``gui-source/KA Lite.sln``
+- Click *BUILD* and then *Build Solution*
+- This will create the following file:
+  ``gui-source/Release/AliuAcademy.exe``.
+  Move this file to:
+  ``gui-packed/AliuAcademy.exe``
+
+Build - Installer
+=================
+
+To build the installer e.g. ``AliuAcademy-1.0.0.0.exe``:
 
 - Clone this repository;
-- Open `cmd` -- the Windows command prompt;
-- Run `make.vbs` and wait until the file is built;
-- The output file named ``KALiteSetup.exe`` will appear within this project
-  folder.
-
-If you wish to build it using Wine, run the following line::
-
-  wine inno-compiler/ISCC.exe installer-source/KaliteSetupScript.iss
+- Open ``cmd`` - the Windows command prompt;
+- Run ``make.vbs`` and wait until the file is built;
+- The output file named ``AliuAcademy-1.0.0.0.exe`` will appear within this
+  project folder.  This is the installer.
