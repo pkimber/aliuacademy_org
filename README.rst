@@ -1,6 +1,13 @@
 AliuAcademy - Installer, Script Files and Django Project
 ********************************************************
 
+Documentation
+=============
+
+To build::
+
+  cd docs && make clean html; cd -
+
 Folders
 =======
 
