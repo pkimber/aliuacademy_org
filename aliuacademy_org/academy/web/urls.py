@@ -61,7 +61,7 @@ urlpatterns = patterns(
         view=AjaxCommandView,
         name='ajaxcall.command.topic'
         ),
-    url(regex=r'^download/(?P<tpc_id>.*)/$',
+    url(regex=r'^download/(?P<topic_id>.*)/$',
         view=DownloadMediaView,
         name='download.media'
         ),

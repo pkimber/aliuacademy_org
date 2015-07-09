@@ -44,6 +44,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.template import RequestContext
 
+
 # to update the view and download counts for videos
 def AjaxCommandView(request,cmd,pk):
     tpc = Topic.objects.get(id=pk)
@@ -54,22 +55,20 @@ def AjaxCommandView(request,cmd,pk):
         vid_vw = VideoView.objects.add_view(tpc,request.user,0,1)
         return HttpResponse(vid_vw.downloaded)
 
+
 # to download something
-def DownloadMediaView(request,tpc_id):
-    tpc = Topic.objects.get(id=tpc_id)  
-    print(tpc.video)  
-    print(str(tpc.video))
-    full_path = '%s\%s' % (settings.MEDIA_ROOT,tpc.video)
-    print(full_path)
-    file = FileWrapper(open(full_path, 'rb'))
-    response = HttpResponse(file)
-    #response['Content-Disposition'] = 'attachment; filename=%s' % tpc.download_file_name()
-    #response['Content-Type'] = 'application/octet-stream'
-    response['Content-Type'] = 'application/octet-stream'
-    response['Content-Disposition'] = 'attachment; filename="one.mp4"'
+def DownloadMediaView(request, topic_id):
+    topic = Topic.objects.get(pk=topic_id)
+    full_path = '{}/{}'.format(settings.MEDIA_ROOT, topic.video)
+    video_file = FileWrapper(open(full_path, 'rb'))
+    response = HttpResponse(video_file)
+    # Do we need the following line for Android download?
+    # response['Content-Type'] = 'application/octet-stream'
+    response['Content-Disposition'] = 'attachment; filename="{}"'.format(
+        topic.download_file_name()
+    )
     return response
 
-       
 
 class DBRebuildView(LoginRequiredMixin, StaffuserRequiredMixin, RedirectView):
         

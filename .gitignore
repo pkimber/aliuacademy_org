@@ -46,6 +46,7 @@ logfile.*
 media
 media-private
 temp.db
+data.sqlite
 venv-*
 web_static
 
